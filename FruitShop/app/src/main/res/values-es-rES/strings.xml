@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FruitShop</string>
+    <string name="fruit_shop">Fruteria Paco</string>
+
+    <string name="selected_fuit">Selecciona la fruta</string>
+    <string name="apple">Manzana</string>
+    <string name="pear">Pera</string>
+    <string name="orange">Naranja</string>
+    <string name="plum">Ciruela</string>
+
+    <string name="quantity_fruit">Elija la cantidad</string>
+    <string name="add">Añadir</string>
+
+</resources>

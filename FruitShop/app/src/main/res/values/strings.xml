@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">FruitShop</string>
+    <string name="fruit_shop">Fruit Shop Paco</string>
+
+    <string name="selected_fuit">Selected the fruit</string>
+    <string name="apple">Apple</string>
+    <string name="pear">Pear</string>
+    <string name="orange">Orange</string>
+    <string name="plum">Plum</string>
+    <string-array name="select_fruit">
+        <item>@string/selected_fuit</item>
+        <item>@string/apple</item>
+        <item>@string/pear</item>
+        <item>@string/orange</item>
+        <item>@string/plum</item>
+    </string-array>
+
+    <string name="quantity_fruit">Choise the quantity</string>
+    <string name="add">Add</string>
+</resources>
