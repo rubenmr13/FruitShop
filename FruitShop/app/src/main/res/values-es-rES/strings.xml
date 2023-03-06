@@ -9,7 +9,9 @@
     <string name="orange">Naranja</string>
     <string name="plum">Ciruela</string>
 
-    <string name="quantity_fruit">Elija la cantidad</string>
+
+    <string name="text_quantity_selected">Numero seleccionado:</string>
+    <string name="price_fruit_text">Precio:</string>
     <string name="add">Añadir</string>
     <string name="delete_basket">vaciar Cesta</string>
 
@@ -20,6 +22,8 @@
 
     <string name="basket">Cesta</string>
     <string name="total">Total</string>
+
+
 
 
 </resources>

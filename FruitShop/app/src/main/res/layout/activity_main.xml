@@ -31,7 +31,28 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:entries="@array/select_fruit"
+                    app:layout_constraintTop_toBottomOf="@+id/fruit_shop"
                     tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/text_quantity_selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/text_quantity_selected" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner_fruit_shop" />
+                <!--
 
                 <EditText
                     android:id="@+id/quantity_number"
@@ -45,28 +66,42 @@
                     android:inputType="number"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spinner_fruit_shop" />
+                    app:layout_constraintTop_toBottomOf="@+id/spinner_fruit_shop" /> -->
 
-                <Button
-                    android:id="@+id/add"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="250dp"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/blue_3F88C5"
-                    android:text="@string/add"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/quantity_number" />
+                    android:orientation="horizontal">
 
+                        <TextView
+                            android:id="@+id/price_fruit_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/price_fruit_text" />
+
+                        <Button
+                            android:id="@+id/add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:backgroundTint="@color/blue_3F88C5"
+                            android:text="@string/add"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/basket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/basket"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -80,6 +115,7 @@
                     android:id="@+id/divider1"
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
                     android:background="@color/green_06A77D"
                     app:layout_constraintBottom_toTopOf="@+id/apple_image"
                     app:layout_constraintTop_toBottomOf="@+id/basket"
@@ -97,7 +133,7 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
-                            app:layout_constraintTop_toBottomOf="@+id/quantity_number"
+                            app:layout_constraintTop_toBottomOf="@+id/seekBar"
                             app:srcCompat="@drawable/apple" />
 
                         <TextView
@@ -109,7 +145,7 @@
                             android:text="@string/apple_text"
                             android:textSize="16sp"
                             app:layout_constraintStart_toEndOf="@+id/apple_image"
-                            app:layout_constraintTop_toBottomOf="@+id/quantity_number" />
+                            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
                 </LinearLayout>
 
@@ -171,7 +207,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
                         <ImageView
                             android:id="@+id/plum_image"
                             android:layout_width="40dp"
@@ -191,9 +226,7 @@
                             android:textSize="16sp"
                             app:layout_constraintStart_toEndOf="@+id/plum_image"
                             app:layout_constraintTop_toBottomOf="@+id/orange_text" />
-
                 </LinearLayout>
-
 
                 <TextView
                     android:id="@+id/total"
@@ -235,8 +268,7 @@
                     android:text="@string/creator"
                     tools:ignore="MissingConstraints" /> -->
 
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+               <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -251,8 +283,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             tools:ignore="MissingConstraints" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+              </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
