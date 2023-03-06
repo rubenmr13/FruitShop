@@ -9,14 +9,14 @@
 
         <TextView
             android:id="@+id/fruit_shop"
-            android:layout_width="180dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="@string/fruit_shop"
-            android:textColor="#3F88C5"
+            android:textColor="@color/green_06A77D"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +53,7 @@
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/blue_3F88C5"
             app:layout_constraintTop_toBottomOf="@+id/spinner_fruit_shop" />
 
         <Button
@@ -64,18 +65,162 @@
             android:text="@string/add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/blue_3F88C5"
             app:layout_constraintTop_toBottomOf="@+id/quantity_number" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="292dp"
-            android:layout_height="233dp"
-            android:text=" "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quantity_number"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="117dp" />
+            android:id="@+id/basket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/basket"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/apple_image"
+            app:layout_constraintStart_toStartOf="parent" />
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/green_06A77D"
+            app:layout_constraintBottom_toTopOf="@+id/apple_image"
+            app:layout_constraintTop_toBottomOf="@+id/basket"
+            tools:layout_editor_absoluteX="1dp"
+            tools:ignore="MissingConstraints" />
 
+        <ImageView
+            android:id="@+id/apple_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="340dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quantity_number"
+            app:srcCompat="@drawable/apple" />
+
+        <ImageView
+            android:id="@+id/pear_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="340dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/apple_image"
+            app:srcCompat="@drawable/pear" />
+
+        <ImageView
+            android:id="@+id/orange_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="340dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pear_image"
+            app:srcCompat="@drawable/orange" />
+
+        <ImageView
+            android:id="@+id/plum_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="340dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/orange_image"
+            app:srcCompat="@drawable/plum" />
+
+        <TextView
+            android:id="@+id/apple_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="110dp"
+            android:text="@string/apple_text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/apple_image"
+            app:layout_constraintTop_toBottomOf="@+id/quantity_number" />
+
+        <TextView
+            android:id="@+id/pear_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/pear_text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/pear_image"
+            app:layout_constraintTop_toBottomOf="@+id/apple_text" />
+
+        <TextView
+            android:id="@+id/orange_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="33dp"
+            android:text="@string/orange_text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/orange_image"
+            app:layout_constraintTop_toBottomOf="@+id/pear_text" />
+
+        <TextView
+            android:id="@+id/plum_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="33dp"
+            android:text="@string/plum_text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/plum_image"
+            app:layout_constraintTop_toBottomOf="@+id/orange_text" />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/total"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plum_image" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/green_06A77D"
+            app:layout_constraintTop_toBottomOf="@+id/total"
+            tools:layout_editor_absoluteX="1dp"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/delete_basket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/red_cc0000"
+            android:text="@string/delete_basket"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/creator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/creator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
