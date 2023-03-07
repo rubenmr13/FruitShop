@@ -51,6 +51,7 @@
                     android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:progressTint="@color/blue_3F88C5"
                     app:layout_constraintTop_toBottomOf="@+id/spinner_fruit_shop" />
                 <!--
 
@@ -146,7 +147,6 @@
                             android:textSize="16sp"
                             app:layout_constraintStart_toEndOf="@+id/apple_image"
                             app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
                 </LinearLayout>
 
                 <LinearLayout

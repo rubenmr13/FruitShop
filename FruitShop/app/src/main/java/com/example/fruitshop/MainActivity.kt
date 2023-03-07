@@ -2,7 +2,6 @@ package com.example.fruitshop
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,17 +31,7 @@ class MainActivity : AppCompatActivity() {
     val orange_price = 0.09
     val plum_price = 0.03
 
-
-
-    val APPLE ="Apple"
-    val PEAR ="Pear"
-    val ORANGE ="Orange"
-    val PLUM = "Plum"
-    val TOTAL = "total"
-
-
-
-    @SuppressLint("WrongViewCast", "MissingInflatedId")
+    @SuppressLint("WrongViewCast", "MissingInflatedId", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,14 +53,15 @@ class MainActivity : AppCompatActivity() {
 
         var quantity_number = 0
 
+        var fruit: String = getString(R.string.selected_fruit)//variable que va a contener la fruta seleccionada en el spinner
+
         val bundle = Bundle()
 
         fruits = init_fruit()
         images = init_image()
         //delete_bundle(bundle)
         //print_delete(bundle, total_text)
-        view_empty_basket(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image,
-                            orange_image, plum_image)
+        view_empty_basket(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image, orange_image, plum_image)
         print_delete(bundle, total_text)
 
        // val fruits = listOf(R.string.apple.toString(), R.string.pear.toString(), R.string.orange.toString(), R.string.plum.toString())
@@ -79,6 +69,8 @@ class MainActivity : AppCompatActivity() {
         val selected_item = findViewById<Spinner>(R.id.spinner_fruit_shop)
         val adapter = ImageFruitAdapt()
         selected_item.adapter = adapter
+
+
 
 
         //Log.d(getString(R.string.apple), "VALOR")
@@ -91,7 +83,8 @@ class MainActivity : AppCompatActivity() {
             @SuppressLint("SetTextI18n")
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-                val fruit = selected_item.selectedItem.toString()
+                //val fruit = selected_item.selectedItem.toString()
+                 fruit = selected_item.selectedItem.toString()
 
 
                 //mostra o no mostra la vista para elegir la cantidad
@@ -106,55 +99,59 @@ class MainActivity : AppCompatActivity() {
                     seekBar.visibility = View.VISIBLE
                     text_quantity_selected.visibility = View.VISIBLE
                     price_fruit_text.visibility = View.VISIBLE
-                    seekBar.progress=0 //ponemos a 0 el seekBar
+                    seekBar.progress = 0 //ponemos a 0 el seekBar
+
+                    text_quantity_selected.setText(getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100")
+                    price_fruit_text.setText(getString(R.string.price_fruit_text)+" "+ String.format("%.2f",calculate_fruit(fruit, quantity_number)) +"€")
                 }
-
-
-                text_quantity_selected.setText(getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100")
-                price_fruit_text.setText(getString(R.string.price_fruit_text)+" "+ String.format("%.2f",calculate_fruit(fruit, quantity_number)) +"€")
-
-                seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                        // Este método se llama cada vez que el valor de la SeekBar cambia
-                        // progress contiene el valor actual de la SeekBar
-                        quantity_number = progress
-                        text_quantity_selected.setText(getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100")
-                        price_fruit_text.setText(getString(R.string.price_fruit_text)+" "+ String.format("%.2f",calculate_fruit(fruit, quantity_number)) +"€")
-                    }
-                    override fun onStartTrackingTouch(seekBar: SeekBar) {
-                        // Este método se llama cuando el usuario toca la SeekBar
-                    }
-                    override fun onStopTrackingTouch(seekBar: SeekBar) {
-                        // Este método se llama cuando el usuario levanta el dedo de la SeekBar
-                    }
-                })
-
-                add_fruit.setOnClickListener {
-
-                    add_fruit(fruit, quantity_number, bundle) //añadimos la fruta al bundle
-                    seekBar.progress=0 //ponemos a 0 el seekBar
-                    calculate_price(bundle) //calculamos el precio y lo añadimos al bundle
-
-                    if (fruit == getString(R.string.apple)) {
-                        view_empty_basket(apple_text, apple_image)
-                        apple_text.setText(getString(R.string.apple_text) + " " + bundle.getInt(fruit).toString())
-                    }else if(fruit == getString(R.string.pear)){
-                        view_empty_basket(pear_text, pear_image)
-                        pear_text.setText(getString(R.string.pear_text) + " " + bundle.getInt(fruit).toString())
-                    }else if(fruit == getString(R.string.orange)){
-                        view_empty_basket(orange_text, orange_image)
-                        orange_text.setText(getString(R.string.orange_text) + " " + bundle.getInt(fruit).toString())
-                    }else{
-                        view_empty_basket(plum_text, plum_image)
-                        plum_text.setText(getString(R.string.plum_text) + " " + bundle.getInt(fruit).toString())
-                    }
-                    total_text.setText(getString(R.string.total) + ": " + String.format("%.2f",bundle.getDouble(getString(R.string.total))) +"€")
-                }
+///////
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         })
+        ///////
 
-        //si seleccionamos el boton de vaciar cesta
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                // Este método se llama cada vez que el valor de la SeekBar cambia
+                // progress contiene el valor actual de la SeekBar
+                quantity_number = progress
+                text_quantity_selected.setText(getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100")
+                price_fruit_text.setText(getString(R.string.price_fruit_text)+" "+ String.format("%.2f",calculate_fruit(fruit, quantity_number)) +"€")
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Este método se llama cuando el usuario toca la SeekBar
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Este método se llama cuando el usuario levanta el dedo de la SeekBar
+            }
+        })
+
+        add_fruit.setOnClickListener {
+
+            add_fruit(fruit, quantity_number, bundle) //añadimos la fruta al bundle
+            seekBar.progress=0 //ponemos a 0 el seekBar
+            calculate_price(bundle) //calculamos el precio y lo añadimos al bundle
+
+            if (fruit == getString(R.string.apple)) {
+                view_empty_basket(apple_text, apple_image)
+                apple_text.setText(getString(R.string.apple_text) + " " + bundle.getInt(fruit).toString())
+            }else if(fruit == getString(R.string.pear)){
+                view_empty_basket(pear_text, pear_image)
+                pear_text.setText(getString(R.string.pear_text) + " " + bundle.getInt(fruit).toString())
+            }else if(fruit == getString(R.string.orange)){
+                view_empty_basket(orange_text, orange_image)
+                orange_text.setText(getString(R.string.orange_text) + " " + bundle.getInt(fruit).toString())
+            }else{
+                view_empty_basket(plum_text, plum_image)
+                plum_text.setText(getString(R.string.plum_text) + " " + bundle.getInt(fruit).toString())
+            }
+            total_text.setText(getString(R.string.total) + ": " + String.format("%.2f",bundle.getDouble(getString(R.string.total))) +"€")
+        }
+/*         }
+        override fun onNothingSelected(parent: AdapterView<*>) {}
+    })*/
+
+    //si seleccionamos el boton de vaciar cesta
         delete_basket.setOnClickListener{
             delete_bundle(bundle, seekBar)
             print_delete(bundle, total_text)
@@ -164,7 +161,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun calculate_fruit(fruit: String, quantity_number: Int): Double{
-        var total = 0.0
+        var total: Double
         if(fruit == getString(R.string.apple)){
             total = quantity_number * apple_price
         }else if(fruit == getString(R.string.pear)){
@@ -219,10 +216,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     //inicializar las imagenes
+    fun init_image(): List<Int> {
+        return listOf(
+            R.drawable.white,
+            R.drawable.apple,
+            R.drawable.pear,
+            R.drawable.orange,
+            R.drawable.plum
+        )
+    }
+    /*
     fun init_image(): List<Int>{
         val image = listOf(R.drawable.white,R.drawable.apple, R.drawable.pear, R.drawable.orange, R.drawable.plum)
         return image
-    }
+    }*/
 
     //funcion para inicializar el bundle
     fun delete_bundle(bundle: Bundle, seekBar: SeekBar){
@@ -234,24 +241,14 @@ class MainActivity : AppCompatActivity() {
         seekBar.progress=0 //ponemos a 0 el seekBar
     }
 
-    //funcion para añadir el la fruta al bundle
 
- /*   fun add_fruit(fruit: String, quantity_number: EditText, bundle: Bundle): String{
-        var resultado : String
-        var quanty = bundle.getInt(fruit) + quantity_number.text.toString().toInt()
-        bundle.putInt(fruit, quanty)
-        //resultado = "El resultado es " + bundle.getInt(fruit).toString()
-
-        return resultado
-    }*/
-     fun add_fruit(fruit: String, quantity_number: Int, bundle: Bundle){
+    fun add_fruit(fruit: String, quantity_number: Int, bundle: Bundle){
          var quanty = bundle.getInt(fruit) + quantity_number
          bundle.putInt(fruit, quanty)
      }
 
     fun calculate_price(bundle: Bundle){
-        var total : Double
-        total = ((bundle.getInt(getString(R.string.apple)) * apple_price)+(bundle.getInt(getString(R.string.pear)) * pear_price)+
+        var total = ((bundle.getInt(getString(R.string.apple)) * apple_price)+(bundle.getInt(getString(R.string.pear)) * pear_price)+
                 (bundle.getInt(getString(R.string.orange)) * orange_price)+(bundle.getInt(getString(R.string.plum)) * plum_price))
         bundle.putDouble(getString(R.string.total), total)
     }
@@ -269,6 +266,20 @@ class MainActivity : AppCompatActivity() {
     fun print_delete(bundle:Bundle,total_text:TextView){
         total_text.setText(getString(R.string.total) + ": " + bundle.getDouble(getString(R.string.total)).toString() +"€")
     }
+
+
+    /*
+    override fun onSaveInstanceState(outState: Bundle){
+        outState.putLong(BUNDLE_OFSET, offset)
+        outState.putBoolean( BUNDLE_RUNNING, running)
+        outState.putLong(BUNDLE_BASE, cronometro.base)
+        Log.d("MainActivity", "Se está ejecutando")
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+    }*/
 
 
 
@@ -292,6 +303,7 @@ class MainActivity : AppCompatActivity() {
         override fun getItemId(position: Int): Long {
             return 0
         }
+        @SuppressLint("ViewHolder")
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val inflater = LayoutInflater.from(this@MainActivity)
             var convertview = convertView
