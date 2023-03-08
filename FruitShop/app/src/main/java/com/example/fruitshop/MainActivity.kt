@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
     //val images = listOf(R.drawable.white,R.drawable.apple, R.drawable.pear, R.drawable.orange, R.drawable.plum)
     lateinit var images : List<Int>
 
-    val apple_price = 0.3
-    val pear_price = 0.2
-    val orange_price = 0.09
-    val plum_price = 0.03
+    val apple_price = 0.5
+    val pear_price = 0.4
+    val orange_price = 0.25
+    val plum_price = 0.09
 
     var bundle = Bundle()
 
@@ -63,8 +63,11 @@ class MainActivity : AppCompatActivity() {
         images = init_image()
         //delete_bundle(bundle)
         //print_delete(bundle, total_text)
-        view_empty_basket(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image, orange_image, plum_image)
-        print_delete(bundle, total_text)
+
+        ///view_empty_basket(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image, orange_image, plum_image)
+        ///views_orientataion(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image,
+        ///    orange_image, plum_image, total_text)
+        ///print_delete(bundle, total_text)
 
 
 
@@ -73,8 +76,6 @@ class MainActivity : AppCompatActivity() {
         val selected_item = findViewById<Spinner>(R.id.spinner_fruit_shop)
         val adapter = ImageFruitAdapt()
         selected_item.adapter = adapter
-
-
 
 
         //Log.d(getString(R.string.apple), "VALOR")
@@ -87,8 +88,7 @@ class MainActivity : AppCompatActivity() {
             @SuppressLint("SetTextI18n")
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-                views_orientataion(bundle, apple_text, pear_text, orange_text , plum_text,
-                    apple_image, pear_image, orange_image, plum_image, total_text) //Muestra las views cuando cambia la orientacion
+                views(bundle, apple_text, pear_text, orange_text , plum_text, apple_image, pear_image, orange_image, plum_image, total_text, delete_basket) //Muestra las views cuando cambia la orientacion
 
                 //val fruit = selected_item.selectedItem.toString()
                  fruit = selected_item.selectedItem.toString()
@@ -100,6 +100,7 @@ class MainActivity : AppCompatActivity() {
                     seekBar.visibility = View.GONE
                     text_quantity_selected.visibility = View.GONE
                     price_fruit_text.visibility = View.GONE
+                    delete_basket.visibility = View.GONE
 
                 }else{ //si se ha seleccionado una fruta mostramos esa fruta
                     add_fruit.visibility = View.VISIBLE
@@ -111,11 +112,9 @@ class MainActivity : AppCompatActivity() {
                     text_quantity_selected.setText(getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100")
                     price_fruit_text.setText(getString(R.string.price_fruit_text)+" "+ String.format("%.2f",calculate_fruit(fruit, quantity_number)) +"€")
                 }
-///////
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         })
-        ///////
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
@@ -139,9 +138,12 @@ class MainActivity : AppCompatActivity() {
             seekBar.progress=0 //ponemos a 0 el seekBar
             calculate_price(bundle) //calculamos el precio y lo añadimos al bundle
 
-            if (fruit == getString(R.string.apple)) {
+            views(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image, orange_image, plum_image, total_text, delete_basket)
+
+            /*if (fruit == getString(R.string.apple)) {
                 view_add_basket(apple_text, apple_image)
                 apple_text.setText(getString(R.string.apple_text) + " " + bundle.getInt(fruit).toString())
+
             }else if(fruit == getString(R.string.pear)){
                 view_add_basket(pear_text, pear_image)
                 pear_text.setText(getString(R.string.pear_text) + " " + bundle.getInt(fruit).toString())
@@ -152,18 +154,16 @@ class MainActivity : AppCompatActivity() {
                 view_add_basket(plum_text, plum_image)
                 plum_text.setText(getString(R.string.plum_text) + " " + bundle.getInt(fruit).toString())
             }
-            total_text.setText(getString(R.string.total) + ": " + String.format("%.2f",bundle.getDouble(getString(R.string.total))) +"€")
+            total_text.setText(getString(R.string.total) + ": " + String.format("%.2f",bundle.getDouble(getString(R.string.total))) +"€")*/
         }
-/*         }
-        override fun onNothingSelected(parent: AdapterView<*>) {}
-    })*/
-
     //si seleccionamos el boton de vaciar cesta
         delete_basket.setOnClickListener{
             delete_bundle(bundle, seekBar)
-            print_delete(bundle, total_text)
-            view_empty_basket(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image,
-                orange_image, plum_image)
+            //print_delete(bundle, total_text)
+            /*view_empty_basket(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image,
+                orange_image, plum_image)*/
+            views(bundle, apple_text, pear_text, orange_text , plum_text,apple_image, pear_image,
+                orange_image, plum_image, total_text, delete_basket)
         }
     }
 
@@ -207,34 +207,73 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun active_views(fruit_text:TextView, fruit_image:ImageView){
+        fruit_text.visibility = View.VISIBLE //mostramos la vista
+        fruit_image.visibility = View.VISIBLE
+    }
+
+    fun desactive_views(fruit_text:TextView, fruit_image:ImageView){
+        fruit_text.visibility = View.GONE //mostramos la vista
+        fruit_image.visibility = View.GONE
+    }
+
+
     //funcion para mostrar las views cuando cambia la orientacion
     @SuppressLint("SetTextI18n")
-    fun views_orientataion(bundle: Bundle, apple_text:TextView, pear_text:TextView, orange_text:TextView,
-                           plum_text:TextView, apple_image:ImageView, pear_image:ImageView,
-                           orange_image:ImageView, plum_image:ImageView, total_text: TextView){
-        if(bundle.getInt(getString(R.string.apple)) != 0){
-            apple_text.visibility = View.VISIBLE //no mostramos la vista
-            apple_image.visibility = View.VISIBLE
+    fun views(bundle: Bundle, apple_text:TextView, pear_text:TextView, orange_text:TextView,
+               plum_text:TextView, apple_image:ImageView, pear_image:ImageView,
+               orange_image:ImageView, plum_image:ImageView, total_text: TextView,
+              delete_basket: Button){
+
+        if(bundle.getInt(getString(R.string.apple)) > 0){
+            active_views(apple_text, apple_image)
+            /*apple_text.visibility = View.VISIBLE
+            apple_image.visibility = View.VISIBLE*/
             apple_text.setText(getString(R.string.apple_text) + " " + bundle.getInt(getString(R.string.apple)).toString())
+        }else{
+            desactive_views(apple_text, apple_image)
+            /*apple_text.visibility = View.GONE
+            apple_image.visibility = View.GONE*/
         }
         if(bundle.getInt(getString(R.string.pear)) != 0){
-            pear_image.visibility = View.VISIBLE
-            pear_text.visibility = View.VISIBLE
+            active_views(pear_text, pear_image)
+            /*pear_image.visibility = View.VISIBLE
+            pear_text.visibility = View.VISIBLE*/
             pear_text.setText(getString(R.string.pear_text) + " " + bundle.getInt(getString(R.string.pear)).toString())
+        }else{
+            desactive_views(pear_text, pear_image)
+            /*pear_image.visibility = View.GONE
+            pear_text.visibility = View.GONE*/
         }
         if(bundle.getInt(getString(R.string.orange)) != 0){
-            orange_text.visibility = View.VISIBLE
-            orange_image.visibility = View.VISIBLE
+            active_views(orange_text, orange_image)
+            /*orange_text.visibility = View.VISIBLE
+            orange_image.visibility = View.VISIBLE*/
             orange_text.setText(getString(R.string.orange_text) + " " + bundle.getInt(getString(R.string.orange)).toString())
+        }else{
+            desactive_views(orange_text, orange_image)
+            /*orange_text.visibility = View.GONE
+            orange_image.visibility = View.GONE*/
         }
         if(bundle.getInt(getString(R.string.plum)) != 0){
-            plum_text.visibility = View.VISIBLE
-            plum_image.visibility = View.VISIBLE
+            active_views(plum_text, plum_image)
+            /*plum_text.visibility = View.VISIBLE
+            plum_image.visibility = View.VISIBLE*/
             plum_text.setText(getString(R.string.plum_text) + " " + bundle.getInt(getString(R.string.plum)).toString())
+        }else{
+            desactive_views(plum_text, plum_image)
+            /*plum_text.visibility = View.GONE
+            plum_image.visibility = View.GONE*/
         }
-        if(bundle.getDouble(getString(R.string.total)) != 0.0){
-                total_text.setText(getString(R.string.total) + ": " + String.format("%.2f",bundle.getDouble(getString(R.string.total))) +"€")
+        if(bundle.getDouble(getString(R.string.total)).toInt() > 0){
+            delete_basket.visibility = View.VISIBLE
+        }else{
+            delete_basket.visibility = View.GONE
         }
+
+        //if(bundle.getDouble(getString(R.string.total)) != 0.0){
+        total_text.setText(getString(R.string.total) + ": " + String.format("%.2f",bundle.getDouble(getString(R.string.total))) +"€")
+        //}
     }
 
     fun view_add_basket(fruit_text:TextView, fruit_image:ImageView){

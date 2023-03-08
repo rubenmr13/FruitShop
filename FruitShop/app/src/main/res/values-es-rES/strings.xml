@@ -13,7 +13,8 @@
     <string name="text_quantity_selected">Numero seleccionado:</string>
     <string name="price_fruit_text">Precio:</string>
     <string name="add">Añadir</string>
-    <string name="delete_basket">vaciar Cesta</string>
+    <string name="delete_basket">Vaciar Cesta</string>
+    <string name="delete">Eliminar</string>
 
     <string name="apple_text">Piezas de manzanas</string>
     <string name="pear_text">Piezas de peras</string>
