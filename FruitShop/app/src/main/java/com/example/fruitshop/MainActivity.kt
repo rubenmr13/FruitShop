@@ -101,6 +101,11 @@ class MainActivity : AppCompatActivity() {
                     text_quantity_selected.visibility = View.GONE
                     price_fruit_text.visibility = View.GONE
                     delete_basket.visibility = View.GONE
+                    if(bundle.getDouble(getString(R.string.total)).toInt() > 0){
+                        delete_basket.visibility = View.VISIBLE
+                    }else{
+                        delete_basket.visibility = View.GONE
+                    }
 
                 }else{ //si se ha seleccionado una fruta mostramos esa fruta
                     add_fruit.visibility = View.VISIBLE
@@ -108,6 +113,12 @@ class MainActivity : AppCompatActivity() {
                     text_quantity_selected.visibility = View.VISIBLE
                     price_fruit_text.visibility = View.VISIBLE
                     seekBar.progress = 0 //ponemos a 0 el seekBar
+
+                    if(bundle.getDouble(getString(R.string.total)).toInt() > 0){
+                        delete_basket.visibility = View.VISIBLE
+                    }else{
+                        delete_basket.visibility = View.GONE
+                    }
 
                     text_quantity_selected.setText(getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100")
                     price_fruit_text.setText(getString(R.string.price_fruit_text)+" "+ String.format("%.2f",calculate_fruit(fruit, quantity_number)) +"€")
@@ -191,7 +202,6 @@ class MainActivity : AppCompatActivity() {
             return 0
         }
     }
-
 
     fun view_empty_basket(bundle:Bundle, apple_text:TextView, pear_text:TextView, orange_text:TextView , plum_text:TextView,
                           apple_image:ImageView, pear_image:ImageView, orange_image:ImageView, plum_image:ImageView){

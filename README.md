@@ -12,6 +12,7 @@ Inicialmente, al ejecutar la aplicación aparecerá un titulo con el nombre de l
 
 Inicialmente este Spinner estará en posición "Select the fruit". Al desplegar el Spinner aparecerá una foto de cada fruta junto al nombre. Al elegir una fruta aparecerá de forma automática un SeekBar donde se podrá elegir la cantidad de producto que queramos, un texto donde aparecerá de forma dinámica el número de elementos que se van seleccionando cuando se desliza el SeekBar y otro texto donde aparecerá el importe del producto que se ha seleccionado. También aparecerá un botón de color azul para añadir el producto a la cesta.
 
+
 Cuando se pulsa el botón y se añade un producto a la cesta, esta se actualiza de forma automática mostrando la foto y nombre del producto seleccionado junto con la cantidad. Al final de la cesta aparecerá el importe total de todos los productos de la cesta, este importe se actualiza de forma instantánea cada vez que se añade un producto a la cesta. 
 
 Cuando el programa detecte que la cesta contiene un producto aparecerá un botón de color rojo dándole la posibilidad al usuario de vaciar la cesta. Al vaciar la cesta todos los productos que había en esta se eliminarán.
@@ -46,3 +47,65 @@ Los extras que se han incluido en la aplicación y en la práctica son:
 
 
 ### Spinner
+
+El Spinner mostrará 5 opciones a elegir , 4 frutas y un elemento neutro "Select the fruit". Cuando este elemento está presente desaparece en pantalla todos los elementos que están relacionados con la selección de la fruta como por ejemplo, el SeekBar, la cantidad de producto seleccionado, el precio de ese producto seleccionado y el botón de añadir a la cesta.
+
+Al seleccionar una fruta en el spinner se restablecen todos los elementos necesarios para añadir una fruta.
+
+El spinner contendrá una foto del producto junto con el nombre del producto.
+
+<br>
+
+### SeekBar
+
+El SeekBar se utilizará para seleccionar la cantidad de producto que se desea añadir a la cesta, el valor máximo del es de 100. A medida que se va deslizando el SeekBar para seleccionar el producto cambiará de forma automática el número de producto y el precio en función de la cantidad seleccionada.
+
+<br>
+
+### Botón Add
+
+La utilidad de este botón será la de añadir el producto que se ha seleccionado en el SeekBar a la cesta.
+
+<br>
+
+### Cesta 
+
+La cesta será dinámica, es decir, a medida que se van añadiendo los productos, la cesta va aumentando su tamaño.
+En la cesta aparecerá todos los productos seleccionados junto a una fotografía, el nombre del producto seleccionado y la cantidad.
+Al final de la cesta aparecerá el coste total de todos los productos que se han añadido a la cesta
+
+<br>
+
+### Botón Delete Basket
+
+Debajo de la cesta, cuando esta contenga algún producto aparecerá un botón de color rojo permitiendo al usuario vaciar la cesta. Cuando la cesta esté vacía este botón no será visible.
+
+
+>## Imágenes
+<br>
+
+
+Fotos de la aplicacion al ejecutarse:
+<br>
+
+
+* Vertical: 
+
+
+    * ![patalla_principal](images/patalla_principal.png)
+
+    * ![seleccionar_fruta](images/seleccionar_fruta.png)
+
+    * ![seleccionar_fruta](images/seleccionando_fruta.png)
+
+* Horizontal:
+
+    * ![horizontal_pagina_principal](images/horizontal_pagina_principal.png)
+
+    * ![seleccionando_fruta_horizontal](images/seleccionando_fruta_horizontal.png)
+
+    * ![seleccionarhorizontal_fruta](images/horizontal.png)
+
+*   Aplicacion en ingles: 
+
+   * ![seleccionarhorizontal_fruta](images/App_Ingles.png)

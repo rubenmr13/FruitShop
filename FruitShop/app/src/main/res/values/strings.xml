@@ -19,7 +19,6 @@
     <string name="price_fruit_text">Price: </string>
     <string name="add">Add</string>
     <string name="delete_basket">Delete Basket</string>
-    <string name="delete">Delete</string>
 
     <string name="apple_text">Apple pieces</string>
     <string name="pear_text">Pear pieces</string>
