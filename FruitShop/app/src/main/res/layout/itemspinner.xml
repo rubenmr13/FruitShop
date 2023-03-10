@@ -8,15 +8,6 @@
         android:id="@+id/imageView"
         android:layout_width="35dp"
         android:layout_height="35dp"/>
-    <!--
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:contentDescription="@string/apple"
-        app:srcCompat="@drawable/apple" />
-    -->
-
 
     <TextView
         android:id="@+id/fruit_type"

@@ -54,21 +54,6 @@
                     android:progressTint="@color/blue_3F88C5"
                     android:thumbTint="@color/blue_3F88C5"
                     app:layout_constraintTop_toBottomOf="@+id/spinner_fruit_shop" />
-                <!--
-
-                <EditText
-                    android:id="@+id/quantity_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:backgroundTint="@color/blue_3F88C5"
-                    android:ems="10"
-                    android:hint="@string/quantity_fruit"
-                    android:inputType="number"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spinner_fruit_shop" /> -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -260,16 +245,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/total"
                     tools:ignore="MissingConstraints" />
-<!--
-                <TextView
-                    android:id="@+id/creator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="90dp"
-                    android:layout_marginEnd="0dp"
-                    android:text="@string/creator"
-                    tools:ignore="MissingConstraints" /> -->
 
                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

@@ -85,7 +85,7 @@ Debajo de la cesta, cuando esta contenga algún producto aparecerá un botón de
 <br>
 
 
-Fotos de la aplicacion al ejecutarse:
+Fotos de la aplicación al ejecutarse:
 <br>
 
 
@@ -106,6 +106,6 @@ Fotos de la aplicacion al ejecutarse:
 
     * ![seleccionarhorizontal_fruta](images/horizontal.png)
 
-*   Aplicacion en ingles: 
+*   Aplicación en ingles: 
 
    * ![seleccionarhorizontal_fruta](images/App_Ingles.png)
