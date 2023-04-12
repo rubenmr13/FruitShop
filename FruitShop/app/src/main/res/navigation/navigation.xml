@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/menuFragment">
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.fruitshop.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_fruitShopFragment2"
+            app:destination="@id/fruitShopFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_menuFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_fishMarketFragment"
+            app:destination="@id/fishMarketFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_butcherShopFragment"
+            app:destination="@id/butcherShopFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fruitShopFragment"
+        android:name="com.example.fruitshop.FruitShopFragment"
+        android:label="FruitShopFragment" />
+    <fragment
+        android:id="@+id/basketFragment"
+        android:name="com.example.fruitshop.BasketFragment"
+        android:label="fragment_basket"
+        tools:layout="@layout/fragment_basket" />
+    <fragment
+        android:id="@+id/fishMarketFragment"
+        android:name="com.example.fruitshop.FishMarketFragment"
+        android:label="fragment_fish_market"
+        tools:layout="@layout/fragment_fish_market" />
+    <fragment
+        android:id="@+id/butcherShopFragment"
+        android:name="com.example.fruitshop.ButcherShopFragment"
+        android:label="fragment_butcher_shop"
+        tools:layout="@layout/fragment_butcher_shop" />
+</navigation>

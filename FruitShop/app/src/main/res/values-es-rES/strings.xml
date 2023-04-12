@@ -1,28 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FruitShop</string>
-    <string name="fruit_shop">Fruterias Paco</string>
 
+    //FRUIT SHOP
+    <string name="fruit_shop">Fruterias Paco</string>
     <string name="selected_fruit">Selecciona la fruta</string>
     <string name="apple">Manzana</string>
     <string name="pear">Pera</string>
     <string name="orange">Naranja</string>
     <string name="plum">Ciruela</string>
-
-
     <string name="text_quantity_selected">Numero seleccionado:</string>
     <string name="price_fruit_text">Precio:</string>
     <string name="add">Añadir</string>
     <string name="delete_basket">Vaciar Cesta</string>
-
     <string name="apple_text">Piezas de manzanas</string>
     <string name="pear_text">Piezas de peras</string>
     <string name="orange_text">Piezas de naranjas</string>
     <string name="plum_text">Piezas de ciruelas</string>
-
     <string name="basket">Cesta</string>
     <string name="total">Total</string>
 
+    //MENU SHOP
+    <string name="menu_shop">Tiendas Paco</string>
+    <string name="user_text">Usuario</string>
+    <string name="fish_market_text">Pescaderia</string>
+    <string name="fruit_shop_text">Fruteria</string>
+    <string name="butcher_shop_text">Carniceria</string>
+    <string name="sport_shop_text">Deportes</string>
+    <string name="inbox_text">Correo</string>
+    <string name="basket_text">Cesta</string>
+
+
+    //FISH MARKET
+    <string name="fish_market">Pescaderias Paco</string>
+    <string name="selected_fish">Selecciona el pescado</string>
+    <string name="salmon">Salmon</string>
+    <string name="gilt_head_bream">Dorada</string>
+    <string name="sea_bass">Lubina</string>
+    <string name="red_mullet">Salmonete</string>
+    <string name="price_fish_text">Precio: </string>
+
+    <string name="salmon_text">Piezas de salmon</string>
+    <string name="gilt_head_bream_text">Piezas de dorada</string>
+    <string name="sea_bass_text">Piezas de lubina</string>
+    <string name="red_mullet_text">Piezas de salmonete</string>
+
+    // BUTCHER SHOP
+    <string name="butcher_shop">Carnicerias Paco</string>
+    <string name="selected_meat">Selecciona la carne</string>
+    <string name="cow">Vaca</string>
+    <string name="chicken">Pollo</string>
+    <string name="pig">Cerdo</string>
+    <string name="mince">Carne picada</string>
+
+    <string name="price_meat_text">Precio: </string>
+    <string name="cow_text">Piezas de vaca</string>
+    <string name="chicken_text">Piezas de pollo</string>
+    <string name="pig_text">Piezas de cerdo</string>
+    <string name="mince_text">Piezas de carne picada</string>
 
 
 

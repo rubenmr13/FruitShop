@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">FruitShop</string>
-    <string name="fruit_shop">Fruit Shops Paco</string>
 
+
+    //FRUIT SHOP
+    <string name="fruit_shop">Fruit Shops Paco</string>
     <string name="selected_fruit">Select the fruit</string>
     <string name="apple">Apple</string>
     <string name="pear">Pear</string>
@@ -24,9 +26,68 @@
     <string name="pear_text">Pear pieces</string>
     <string name="orange_text">Orange pieces</string>
     <string name="plum_text">Plum pieces</string>
-    
+
     <string name="basket">Basket</string>
     <string name="total">Total</string>
     <string name="creator" translatable="false">By Rubén Manzanas Rodríguez</string>
+
+    //MENU SHOP
+    <string name="menu_shop">Shops Paco</string>
+    <string name="user_text">User</string>
+    <string name="fish_market_text">Fish Market</string>
+    <string name="fruit_shop_text">Fruit Shop</string>
+    <string name="butcher_shop_text">Butcher Shop</string>
+    <string name="sport_shop_text">Sports</string>
+    <string name="inbox_text">Inbox</string>
+    <string name="basket_text">Basket</string>
+    <string name="chat_text" translatable="false">Chat</string>
+
+
+    //FISH MARKET
+    <string name="fish_market">Fish Market Paco</string>
+    <string name="selected_fish">Select the fish</string>
+    <string name="salmon">Salmon</string>
+    <string name="gilt_head_bream">Gilt-head bream</string>
+    <string name="sea_bass">Sea bass</string>
+    <string name="red_mullet">Red mullet</string>
+    <string-array name="select_fish">
+        <item>@string/selected_fish</item>
+        <item>@string/salmon</item>
+        <item>@string/gilt_head_bream</item>
+        <item>@string/sea_bass</item>
+        <item>@string/red_mullet</item>
+    </string-array>
+
+    <string name="price_fish_text">Price: </string>
+    <string name="salmon_text">Salmon pieces</string>
+    <string name="gilt_head_bream_text">Gilt-head bream pieces</string>
+    <string name="sea_bass_text">Sea bass pieces</string>
+    <string name="red_mullet_text">Red mullet pieces</string>
+
+
+    //BUTCHER SHOP
+    <string name="butcher_shop">Butcher Shop Paco</string>
+    <string name="selected_meat">Select the meet</string>
+    <string name="cow">Cow</string>
+    <string name="chicken">Chicken</string>
+    <string name="pig">Pig</string>
+    <string name="mince">Mince</string>
+
+    <string-array name="select_meat">
+        <item>@string/selected_meat</item>
+        <item>@string/cow</item>
+        <item>@string/chicken</item>
+        <item>@string/pig</item>
+        <item>@string/mince</item>
+    </string-array>
+
+    <string name="price_meat_text">Price: </string>
+    <string name="cow_text">Cow pieces</string>
+    <string name="chicken_text">Chicken pieces</string>
+    <string name="pig_text">Pig pieces</string>
+    <string name="mince_text">Mince pieces</string>
+
+
+
 
 </resources>
