@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -13,6 +14,8 @@
     <color name="red_cc0000">#cc0000</color>
     <color name="red_EF233C">#EF233C</color>
     <color name="butcher_a10304">#a10304</color>
-
-
+    <color name="yellow_ffbe0b">#ffbe0b</color>
+    <color name="yellow_ffa62b">#ffa62b</color>
+    <color name="gey_8d99ae">#8d99ae</color>
+    <color name="gey_2f3e46">#2f3e46</color>
 </resources>

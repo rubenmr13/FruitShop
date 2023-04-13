@@ -34,6 +34,7 @@ class BasketFragment : Fragment() {
 
         binding.viewModel = fruitShopViewModel
 
+
         fruitViews(binding.appleText, binding.pearText, binding.orangeText, binding.plumText, binding.appleImage,
             binding.pearImage, binding.orangeImage, binding.plumImage)
 
@@ -43,24 +44,34 @@ class BasketFragment : Fragment() {
         meatViews(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
             binding.chickenImage, binding.pigImage, binding.minceImage)
 
+        viewsSport(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
+            binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage)
 
         totalView()
+        viewDelete()
+
 
 
         binding.deleteBasket.setOnClickListener{
             fruitShopViewModel.deleteItemFruit()
             fruitViews(binding.appleText, binding.pearText, binding.orangeText , binding.plumText,binding.appleImage, binding.pearImage,
                 binding.orangeImage, binding.plumImage)
+
             fruitShopViewModel.deleteItemFish()
             fishViews(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                 binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage)
+
             fruitShopViewModel.deleteItemMeat()
             meatViews(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
                 binding.chickenImage, binding.pigImage, binding.minceImage)
+
+            fruitShopViewModel.deleteItemSport()
+            viewsSport(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
+                binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage)
+
             totalView()
+            viewDelete()
         }
-
-
 
         return binding.root
     }
@@ -85,7 +96,6 @@ class BasketFragment : Fragment() {
         if((fruitShopViewModel.apple.value ?: 0) > 0){
             activeViews(apple_text, apple_image)
             binding.appleText.text = getString(R.string.apple_text) + " " + fruitShopViewModel.apple.value.toString()
-            ///apple_text.setText(getString(R.string.apple_text) + " " +fruitShopViewModel.apple.toString()) ////aqui hacemos lo del apple
         }else{
             desactiveViews(apple_text, apple_image)
         }
@@ -139,9 +149,10 @@ class BasketFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun meatViews(cow_text: TextView, chicken_text: TextView, pig_text: TextView,
-              mince_text: TextView, cow_image: ImageView, chicken_image: ImageView,
-              pig_image: ImageView, mince_image: ImageView){
+                  mince_text: TextView, cow_image: ImageView, chicken_image: ImageView,
+                  pig_image: ImageView, mince_image: ImageView){
         if((fruitShopViewModel.cow.value ?: 0) > 0){
             activeViews(cow_text, cow_image)
             binding.cowText.text = getString(R.string.cow_text) + " " + fruitShopViewModel.cow.value.toString()
@@ -168,13 +179,51 @@ class BasketFragment : Fragment() {
         }
     }
 
-    fun totalView(){
+    @SuppressLint("SetTextI18n")
+    fun viewsSport(ballSoccer_text: TextView, ballBasket_text: TextView, ballTennis_text: TextView,
+                   ballBaseball_text: TextView, ballSoccer_image: ImageView, ballBasket_image: ImageView,
+                   ballTennis_image: ImageView, ballBaseball_image: ImageView){
+        if((fruitShopViewModel.ballSoccer.value ?: 0) > 0){
+            activeViews(ballSoccer_text, ballSoccer_image)
+            binding.ballSoccerText.text = getString(R.string.ball_soccer_text) + " " + fruitShopViewModel.ballSoccer.value.toString()
+
+        }else{
+            desactiveViews(ballSoccer_text, ballSoccer_image)
+        }
+        if((fruitShopViewModel.ballBasket.value ?: 0) > 0){
+            activeViews(ballBasket_text, ballBasket_image)
+            binding.ballBasketText.text = getString(R.string.ball_basket_text) + " " + fruitShopViewModel.ballBasket.value.toString()
+        }else{
+            desactiveViews(ballBasket_text, ballBasket_image)
+        }
+        if((fruitShopViewModel.ballTennis.value ?: 0) > 0){
+            activeViews(ballTennis_text, ballTennis_image)
+            binding.ballTennisText.text = getString(R.string.ball_tennis_text) + " " + fruitShopViewModel.ballTennis.value.toString()
+        }else{
+            desactiveViews(ballTennis_text, ballTennis_image)
+        }
+        if((fruitShopViewModel.ballBaseball.value ?: 0) > 0){
+            activeViews(ballBaseball_text, ballBaseball_image)
+            binding.ballBaseballText.text = getString(R.string.ball_baseball_text) + " " + fruitShopViewModel.ballBaseball.value.toString()
+        }else{
+            desactiveViews(ballBaseball_text, ballBaseball_image)
+        }
+    }
+
+    fun viewDelete(){
         if((fruitShopViewModel.totalFinal.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
+        }else{
+            binding.deleteBasket.visibility = View.GONE
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun totalView(){
+        if((fruitShopViewModel.totalFinal.value ?: 0.0) > 0.0){
             fruitShopViewModel.calculatePriceFinal()
             binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",fruitShopViewModel.totalFinal.value) +"€"
         }else{
-            binding.deleteBasket.visibility = View.GONE
             fruitShopViewModel.calculatePriceFinal()
             binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",fruitShopViewModel.totalFinal.value) +"€"
         }

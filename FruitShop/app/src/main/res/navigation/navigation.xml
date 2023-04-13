@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.fruitshop.MenuFragment"
-        android:label="fragment_menu"
+        android:label="@string/label_menu"
         tools:layout="@layout/fragment_menu" >
         <action
             android:id="@+id/action_menuFragment_to_fruitShopFragment2"
@@ -22,24 +22,32 @@
         <action
             android:id="@+id/action_menuFragment_to_butcherShopFragment"
             app:destination="@id/butcherShopFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_sportShopFragment"
+            app:destination="@id/sportShopFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitShopFragment"
         android:name="com.example.fruitshop.FruitShopFragment"
-        android:label="FruitShopFragment" />
+        android:label="@string/label_fruit_shop"/>
     <fragment
         android:id="@+id/basketFragment"
         android:name="com.example.fruitshop.BasketFragment"
-        android:label="fragment_basket"
+        android:label="@string/label_basket"
         tools:layout="@layout/fragment_basket" />
     <fragment
         android:id="@+id/fishMarketFragment"
         android:name="com.example.fruitshop.FishMarketFragment"
-        android:label="fragment_fish_market"
+        android:label="@string/label_fish_market"
         tools:layout="@layout/fragment_fish_market" />
     <fragment
         android:id="@+id/butcherShopFragment"
         android:name="com.example.fruitshop.ButcherShopFragment"
-        android:label="fragment_butcher_shop"
+        android:label="@string/label_butcher_shop"
         tools:layout="@layout/fragment_butcher_shop" />
+    <fragment
+        android:id="@+id/sportShopFragment"
+        android:name="com.example.fruitshop.SportShopFragment"
+        android:label="@string/label_sport_shop"
+        tools:layout="@layout/fragment_sport_shop" />
 </navigation>

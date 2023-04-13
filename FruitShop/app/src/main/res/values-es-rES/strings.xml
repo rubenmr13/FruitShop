@@ -59,6 +59,29 @@
     <string name="pig_text">Piezas de cerdo</string>
     <string name="mince_text">Piezas de carne picada</string>
 
+    //SPORT SHOP
+    <string name="sport_shop">Deportes Paco</string>
+    <string name="selected_sport">Selecciona el articulo de deporte</string>
+    <string name="ball_soccer">Pelota de futbol</string>
+    <string name="ball_basket">Pelota de baloncesto</string>
+    <string name="ball_tennis">Pelota de tenis</string>
+    <string name="ball_baseball">Pelota de beisbol</string>
+
+    <string name="price_sport_text">Precio: </string>
+    <string name="ball_soccer_text">Numero pelotas de futbol</string>
+    <string name="ball_basket_text">Numero pelotas de baloncesto</string>
+    <string name="ball_tennis_text">Numero pelotas de tenis</string>
+    <string name="ball_baseball_text">Numero pelotas de baisbol</string>
+
+
+    //LABEL
+    <string name="label_fruit_shop">Fruteria</string>
+    <string name="label_fish_market">Pescaderia</string>
+    <string name="label_butcher_shop">Carniceria</string>
+    <string name="label_sport_shop">Deportes</string>
+    <string name="label_menu">Menu</string>
+    <string name="label_basket">Cesta</string>
+
 
 
 </resources>

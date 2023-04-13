@@ -50,7 +50,7 @@ class MenuFragment : Fragment() {
         }
 
         binding.sportImage.setOnClickListener {
-            //findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
+            findNavController().navigate(R.id.action_menuFragment_to_sportShopFragment)
         }
 
         binding.inboxImage.setOnClickListener {

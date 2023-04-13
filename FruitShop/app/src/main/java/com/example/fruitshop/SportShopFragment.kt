@@ -1,59 +1,241 @@
 package com.example.fruitshop
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import com.example.fruitshop.databinding.FragmentSportShopBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SportShopFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SportShopFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+
+    private lateinit var binding: FragmentSportShopBinding
+    private val fruitShopViewModel: FruitShopViewModel by activityViewModels()
+
+    var sport = mutableListOf<String>() //no quitar
+    lateinit var images : List<Int> //no quitar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sport_shop, container, false)
+
+        var quantity_number = 0
+
+        fruitShopViewModel.totalSport.observe(viewLifecycleOwner, Observer { newTotalSport ->
+            binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",newTotalSport) +"€"
+        })
+
+        fruitShopViewModel.ballSoccer.observe(viewLifecycleOwner, Observer { newBallSoccer ->
+            binding.ballSoccerText.text = getString(R.string.ball_soccer_text) + " " +newBallSoccer.toString() ////aqui hacemos lo del apple
+        })
+
+        fruitShopViewModel.ballBasket.observe(viewLifecycleOwner, Observer { newBallBasket ->
+            binding.ballBasketText.text = getString(R.string.ball_basket_text) + " " + newBallBasket.toString()
+        })
+
+        fruitShopViewModel.ballTennis.observe(viewLifecycleOwner, Observer { newBallTennis ->
+            binding.ballTennisText.text = getString(R.string.ball_tennis_text) + " " + newBallTennis.toString()
+        })
+
+        fruitShopViewModel.ballBaseball.observe(viewLifecycleOwner, Observer { newBallBaseball ->
+            binding.ballBaseballText.text = getString(R.string.ball_baseball_text) + " " + newBallBaseball.toString()
+        })
+
+        fruitShopViewModel.sport.observe(viewLifecycleOwner, Observer{ newSport ->
+            if(newSport == getString(R.string.selected_sport)){
+                noSelectedSport()
+            }else{ //si se ha seleccionado una fruta mostramos esa fruta
+                selectedSport(quantity_number)
+            }
+        })
+
+        fruitShopViewModel.saveSport(getString(R.string.selected_sport))
+
+        sport = initSport()
+        images = initImage()
+
+        val adapter = ImageSportAdapt()
+        binding.spinnerSportShop.adapter = adapter
+
+
+        //vemos que hemos seleccionado con el spinner
+        binding.spinnerSportShop.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+                views(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
+                    binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
+
+                fruitShopViewModel.saveSport(binding.spinnerSportShop.selectedItem.toString())
+                //usamos el observer de fruit para actualizar las vistas
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+        binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                quantity_number = progress
+                binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/50"
+                binding.priceSportText.text = getString(R.string.price_sport_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateSport(quantity_number, this@SportShopFragment)) +"€"
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Este método se llama cuando el usuario toca la SeekBar
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Este método se llama cuando el usuario levanta el dedo de la SeekBar
+            }
+        })
+
+        //seleccionamos el boton de añadir fruta
+        binding.addSport.setOnClickListener {
+            fruitShopViewModel.addSport(quantity_number, this) //añadimos la fruta al bundle
+            binding.seekBar.progress=0 //ponemos a 0 el seekBar
+            fruitShopViewModel.calculatePriceSport() //calculamos el precio y lo añadimos al bundle
+            views(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
+                binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket)
+        }
+
+        //si seleccionamos el boton de vaciar cesta
+        binding.deleteBasket.setOnClickListener{
+            fruitShopViewModel.deleteItemSport()
+            binding.seekBar.progress=0
+            views(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
+                binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket)
+        }
+        return binding.root
+    }
+
+    inner class ImageSportAdapt : BaseAdapter() {
+
+        override fun getCount(): Int {
+            return sport.size
+        }
+
+        override fun getItem(position: Int): Any {
+            return sport[position]
+        }
+
+        override fun getItemId(position: Int): Long {
+            return 0
+        }
+        @SuppressLint("MissingInflatedId")
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val convertview = LayoutInflater.from(context).inflate(R.layout.itemspinner, parent, false)
+            //var convertview = convertView
+            // convertview = inflater.inflate(R.layout.itemspinner, parent, false)
+
+            val imageView = convertview.findViewById<ImageView>(R.id.imageView)
+            val tv1 = convertview.findViewById<TextView>(R.id.item_type)
+
+            imageView.setImageResource(images[position])
+            tv1.text = sport[position]
+
+            return convertview
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sport_shop, container, false)
+    fun noSelectedSport(){
+        binding.addSport.visibility = View.GONE //no mostramos la vista
+        binding.seekBar.visibility = View.GONE
+        binding.textQuantitySelected.visibility = View.GONE
+        binding.priceSportText.visibility = View.GONE
+        binding.deleteBasket.visibility = View.GONE
+
+        if((fruitShopViewModel.totalSport.value ?: 0.0) > 0.0){
+            binding.deleteBasket.visibility = View.VISIBLE
+        }else{
+            binding.deleteBasket.visibility = View.GONE
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SportShopFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SportShopFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun selectedSport(quantity_number: Int){
+        binding.addSport.visibility = View.VISIBLE
+        binding.seekBar.visibility = View.VISIBLE
+        binding.textQuantitySelected.visibility = View.VISIBLE
+        binding.priceSportText.visibility = View.VISIBLE
+        binding.seekBar.progress = 0 //ponemos a 0 el seekBar
+
+        if((fruitShopViewModel.totalSport.value ?: 0.0) > 0.0){
+            binding.deleteBasket.visibility = View.VISIBLE
+        }else{
+            binding.deleteBasket.visibility = View.GONE
+        }
+
+        binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/50"
+        binding.priceSportText.text = getString(R.string.price_sport_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateSport(quantity_number, this )) +"€"
+    }
+
+    fun active_views(sport_text: TextView, sport_image: ImageView){
+        sport_text.visibility = View.VISIBLE //mostramos la vista
+        sport_image.visibility = View.VISIBLE
+    }
+
+    fun desactive_views(sport_text: TextView, sport_image: ImageView){
+        sport_text.visibility = View.GONE //mostramos la vista
+        sport_image.visibility = View.GONE
+    }
+
+    //funcion para mostrar las views cuando cambia la orientacion
+    fun views(ballSoccer_text: TextView, ballBasket_text: TextView, ballTennis_text: TextView,
+              ballBaseball_text: TextView, ballSoccer_image: ImageView, ballBasket_image: ImageView,
+              ballTennis_image: ImageView, ballBaseball_image: ImageView, delete_basket: Button
+    ){
+        if((fruitShopViewModel.ballSoccer.value ?: 0) > 0){
+            active_views(ballSoccer_text, ballSoccer_image)
+        }else{
+            desactive_views(ballSoccer_text, ballSoccer_image)
+        }
+        if((fruitShopViewModel.ballBasket.value ?: 0) > 0){
+            active_views(ballBasket_text, ballBasket_image)
+        }else{
+            desactive_views(ballBasket_text, ballBasket_image)
+        }
+        if((fruitShopViewModel.ballTennis.value ?: 0) > 0){
+            active_views(ballTennis_text, ballTennis_image)
+        }else{
+            desactive_views(ballTennis_text, ballTennis_image)
+        }
+        if((fruitShopViewModel.ballBaseball.value ?: 0) > 0){
+            active_views(ballBaseball_text, ballBaseball_image)
+        }else{
+            desactive_views(ballBaseball_text, ballBaseball_image)
+        }
+        if((fruitShopViewModel.totalSport.value ?: 0.0) > 0.0){
+            delete_basket.visibility = View.VISIBLE
+        }else{
+            delete_basket.visibility = View.GONE
+        }
+    }
+
+    // inicializa la lista del spinner //no se puede quitar
+    fun initSport(): MutableList<String>{
+        val sport = mutableListOf<String>()
+        sport.add(getString(R.string.selected_sport))
+        sport.add(getString(R.string.ball_soccer))
+        sport.add(getString(R.string.ball_basket))
+        sport.add(getString(R.string.ball_tennis))
+        sport.add(getString(R.string.ball_baseball))
+        return sport
+    }
+
+    //inicializar las imagenes //no se puede quitar
+    fun initImage(): List<Int> {
+        return listOf(
+            R.drawable.white,
+            R.drawable.soccer,
+            R.drawable.ball_basket,
+            R.drawable.tennis,
+            R.drawable.baseball
+        )
     }
 }

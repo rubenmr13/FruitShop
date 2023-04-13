@@ -88,6 +88,37 @@
     <string name="mince_text">Mince pieces</string>
 
 
+    //SPORT SHOP
+    <string name="sport_shop">Sport Shop Paco</string>
+    <string name="selected_sport">Select the item sport</string>
+    <string name="ball_soccer">Ball soccer</string>
+    <string name="ball_basket">Ball basket</string>
+    <string name="ball_tennis">Ball tennis</string>
+    <string name="ball_baseball">Ball baseball</string>
+
+    <string-array name="select_sport">
+        <item>@string/selected_sport</item>
+        <item>@string/ball_soccer</item>
+        <item>@string/ball_basket</item>
+        <item>@string/ball_tennis</item>
+        <item>@string/ball_baseball</item>
+    </string-array>
+
+    <string name="price_sport_text">Price: </string>
+    <string name="ball_soccer_text">Number ball soccer</string>
+    <string name="ball_basket_text">Number ball basket</string>
+    <string name="ball_tennis_text">Number ball tennis</string>
+    <string name="ball_baseball_text">Number ball baseball</string>
+
+    //LABEL
+    <string name="label_fruit_shop">Fruit Shop</string>
+    <string name="label_fish_market">Fish Market</string>
+    <string name="label_butcher_shop">Butcher Shop</string>
+    <string name="label_sport_shop">Sport Shop</string>
+    <string name="label_menu">Menu</string>
+    <string name="label_basket">Basket</string>
+
+
 
 
 </resources>
