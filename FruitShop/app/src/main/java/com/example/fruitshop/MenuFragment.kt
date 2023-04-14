@@ -31,9 +31,9 @@ class MenuFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false)
 
         //boton usuario
-        binding.userImage.setOnClickListener {
+ /*       binding.userImage.setOnClickListener {
             //findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
-        }
+        }*/
 
         //boton fruteria
         binding.fruitImage.setOnClickListener { //Hecho
@@ -53,7 +53,7 @@ class MenuFragment : Fragment() {
             findNavController().navigate(R.id.action_menuFragment_to_sportShopFragment)
         }
 
-        binding.inboxImage.setOnClickListener {
+ /*       binding.inboxImage.setOnClickListener {
             //findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
         }
 
@@ -63,7 +63,7 @@ class MenuFragment : Fragment() {
 
         binding.chatImage.setOnClickListener {
             //findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
-        }
+        }*/
 
 
 

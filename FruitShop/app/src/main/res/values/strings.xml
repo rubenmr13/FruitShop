@@ -33,14 +33,10 @@
 
     //MENU SHOP
     <string name="menu_shop">Shops Paco</string>
-    <string name="user_text">User</string>
     <string name="fish_market_text">Fish Market</string>
     <string name="fruit_shop_text">Fruit Shop</string>
     <string name="butcher_shop_text">Butcher Shop</string>
     <string name="sport_shop_text">Sports</string>
-    <string name="inbox_text">Inbox</string>
-    <string name="basket_text">Basket</string>
-    <string name="chat_text" translatable="false">Chat</string>
 
 
     //FISH MARKET
@@ -118,6 +114,11 @@
     <string name="label_menu">Menu</string>
     <string name="label_basket">Basket</string>
 
+    //DRAWER
+    <string name="user_text">User</string>
+    <string name="inbox_text">Inbox</string>
+    <string name="chat_text" translatable="false">Chat</string>>
+    <string name="basket_text">Basket</string>
 
 
 

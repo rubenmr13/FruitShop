@@ -14,9 +14,6 @@
             app:destination="@id/fruitShopFragment"
             app:launchSingleTop="true" />
         <action
-            android:id="@+id/action_menuFragment_to_basketFragment"
-            app:destination="@id/basketFragment" />
-        <action
             android:id="@+id/action_menuFragment_to_fishMarketFragment"
             app:destination="@id/fishMarketFragment" />
         <action
@@ -50,4 +47,9 @@
         android:name="com.example.fruitshop.SportShopFragment"
         android:label="@string/label_sport_shop"
         tools:layout="@layout/fragment_sport_shop" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.fruitshop.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" />
 </navigation>

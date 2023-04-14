@@ -22,13 +22,11 @@
 
     //MENU SHOP
     <string name="menu_shop">Tiendas Paco</string>
-    <string name="user_text">Usuario</string>
     <string name="fish_market_text">Pescaderia</string>
     <string name="fruit_shop_text">Fruteria</string>
     <string name="butcher_shop_text">Carniceria</string>
     <string name="sport_shop_text">Deportes</string>
-    <string name="inbox_text">Correo</string>
-    <string name="basket_text">Cesta</string>
+
 
 
     //FISH MARKET
@@ -39,7 +37,6 @@
     <string name="sea_bass">Lubina</string>
     <string name="red_mullet">Salmonete</string>
     <string name="price_fish_text">Precio: </string>
-
     <string name="salmon_text">Piezas de salmon</string>
     <string name="gilt_head_bream_text">Piezas de dorada</string>
     <string name="sea_bass_text">Piezas de lubina</string>
@@ -82,6 +79,11 @@
     <string name="label_menu">Menu</string>
     <string name="label_basket">Cesta</string>
 
+
+    //DRAWER
+    <string name="user_text">Usuario</string>
+    <string name="inbox_text">Correo</string>
+    <string name="basket_text">Cesta</string>
 
 
 </resources>
