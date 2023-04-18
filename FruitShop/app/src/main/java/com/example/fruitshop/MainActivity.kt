@@ -96,12 +96,11 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
     }
 
-   /* override fun onCreateOptionsMenu(menu: Menu?): Boolean { //con esto meto en mi menu dentro del toolbar, cuando pintes el menu lo inflas
-        menuInflater.inflate(R.menu.basket_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }*/
+    /* override fun onCreateOptionsMenu(menu: Menu?): Boolean { //con esto meto en mi menu dentro del toolbar, cuando pintes el menu lo inflas
+         menuInflater.inflate(R.menu.basket_menu, menu)
+         return super.onCreateOptionsMenu(menu)
+     }*/
 }
-
 
 
 

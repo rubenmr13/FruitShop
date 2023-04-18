@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.fruitshop.databinding.FragmentButcherShopBinding
 
 class ButcherShopFragment : Fragment() {
@@ -114,6 +115,10 @@ class ButcherShopFragment : Fragment() {
             binding.seekBar.progress=0
             views(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
                 binding.chickenImage, binding.pigImage, binding.minceImage, binding.deleteBasket)
+        }
+
+        binding.basketImage.setOnClickListener {
+            findNavController().navigate(R.id.action_butcherShopFragment_to_basketFragment)
         }
 
         return binding.root

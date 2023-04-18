@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/butcher_shop"
             android:textColor="@color/butcher_a10304"
             android:textSize="24sp"
@@ -237,17 +237,45 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="1dp" />
 
-        <Button
-            android:id="@+id/delete_basket"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="246dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/red_cc0000"
-            android:text="@string/delete_basket"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total"
-            tools:ignore="MissingConstraints" />
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/basket_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:onClick="fruitsButtonCLick"
+                    android:src="@drawable/basket" />
+                <TextView
+                    android:id="@+id/basket_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/basket_text" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/delete_basket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:backgroundTint="@color/red_cc0000"
+                android:text="@string/delete_basket"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/total"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

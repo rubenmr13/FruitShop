@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.fruitshop.databinding.FragmentFishMarketBinding
 
 class FishMarketFragment : Fragment() {
@@ -111,6 +112,10 @@ class FishMarketFragment : Fragment() {
             binding.seekBar.progress=0
             views(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                 binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage, binding.deleteBasket)
+        }
+
+        binding.basketImage.setOnClickListener {
+            findNavController().navigate(R.id.action_fishMarketFragment_to_basketFragment)
         }
         return binding.root
     }

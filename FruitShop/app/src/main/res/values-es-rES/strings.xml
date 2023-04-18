@@ -83,7 +83,27 @@
     //DRAWER
     <string name="user_text">Usuario</string>
     <string name="inbox_text">Correo</string>
-    <string name="basket_text">Cesta</string>
+    <string name="basket_text">Cesta Total</string>
 
+
+
+    //USER
+    <string name="user">Usuario</string>
+    <string name="sing_up">Registrarse</string>
+    <string name="sign_in">Iniciar Sesion</string>
+    <string name="password">Contraseña</string>
+    <string name="welcome_user">Registro</string>
+    <string name="register_user">Registro Usuario</string>
+
+    //CHAT
+    <string name="chat_header" translatable="false">Chat de la tienda</string>
+    <string name="send_text">Escribe aquí</string>
+    <string name="send">Enviar</string>
+
+    //INBOX
+    <string name="inbox_header">Correo de la tienda</string>
+    <string name="your_message">Tus mensajes:</string>
+    <string name="delete_message">Borrar mensajes</string>
+    <string name="buy_all">Buy</string>
 
 </resources>

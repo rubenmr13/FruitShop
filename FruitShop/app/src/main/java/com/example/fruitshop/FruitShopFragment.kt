@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.fruitshop.databinding.FragmentFruitShopBinding
 
 class FruitShopFragment : Fragment() {
@@ -126,6 +127,10 @@ class FruitShopFragment : Fragment() {
             binding.seekBar.progress=0
             views(binding.appleText, binding.pearText, binding.orangeText , binding.plumText,binding.appleImage, binding.pearImage,
                 binding.orangeImage, binding.plumImage, binding.deleteBasket)
+        }
+
+        binding.basketImage.setOnClickListener {
+            findNavController().navigate(R.id.action_fruitShopFragment_to_basketFragment)
         }
 
         // Inflate the layout for this fragment

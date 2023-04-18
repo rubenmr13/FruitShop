@@ -118,7 +118,28 @@
     <string name="user_text">User</string>
     <string name="inbox_text">Inbox</string>
     <string name="chat_text" translatable="false">Chat</string>>
-    <string name="basket_text">Basket</string>
+    <string name="basket_text">Total Basket</string>
+
+    //USER
+    <string name="user">User</string>
+    <string name="sing_up">Sing up</string>
+    <string name="sign_in">Sing in</string>
+    <string name="password">Password</string>
+    <string name="welcome_user">Register</string>
+    <string name="register_user">Register User</string>
+
+
+    //CHAT
+    <string name="chat_header">Chat of shop</string>
+    <string name="send_text">Write here</string>
+    <string name="send">Send</string>
+
+    //INBOX
+    <string name="inbox_header">Inbox of shop</string>
+    <string name="your_message">Your messages:</string>
+    <string name="delete_message">Delete messages</string>
+    <string name="buy_all">Buy</string>
+
 
 
 

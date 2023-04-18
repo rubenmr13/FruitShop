@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.fruitshop.databinding.FragmentSportShopBinding
 
 class SportShopFragment : Fragment() {
@@ -112,6 +113,11 @@ class SportShopFragment : Fragment() {
             views(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
                 binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket)
         }
+
+        binding.basketImage.setOnClickListener {
+            findNavController().navigate(R.id.action_sportShopFragment_to_basketFragment)
+        }
+
         return binding.root
     }
 
