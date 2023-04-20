@@ -2,14 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ChatFragment">
+    tools:context=".InboxFragment">
 
     <data>
         <variable
             name="viewModel"
             type = "com.example.fruitshop.FruitShopViewModel"/>
     </data>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,51 +20,53 @@
             tools:layout_editor_absoluteY="0dp">
 
             <TextView
-                android:id="@+id/chat"
+                android:id="@+id/fish_market"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="@string/chat_header"
-                android:textColor="@color/grey_717568"
+                android:layout_marginTop="10dp"
+                android:text="@string/inbox_header"
+                android:textColor="@color/brown_6d4c3d"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/received_text"
+                android:id="@+id/your_message_inbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/your_message"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/message_inbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="20dp"
                 android:text="" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/send_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:backgroundTint="@color/grey_717568"
-                    android:ems="10"
-                    android:hint="@string/send_text"
-                    android:padding="16dp" />
-
+                android:orientation="vertical">
                 <Button
-                    android:id="@+id/send_button"
+                    android:id="@+id/delete_message"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="50dp"
-                    android:backgroundTint="@color/blue_3F88C5"
-                    android:layout_weight="1"
-                    android:text="@string/send" />
-
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@color/red_cc0000"
+                    android:text="@string/delete_message"/>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
+
+
+
 </layout>
