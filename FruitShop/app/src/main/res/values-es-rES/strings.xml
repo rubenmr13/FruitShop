@@ -59,13 +59,13 @@
     //SPORT SHOP
     <string name="sport_shop">Deportes Paco</string>
     <string name="selected_sport">Selecciona el articulo de deporte</string>
-    <string name="ball_soccer">Pelota de futbol</string>
+    <string name="ball_soccer">Pelota de fútbol</string>
     <string name="ball_basket">Pelota de baloncesto</string>
     <string name="ball_tennis">Pelota de tenis</string>
     <string name="ball_baseball">Pelota de beisbol</string>
 
     <string name="price_sport_text">Precio: </string>
-    <string name="ball_soccer_text">Numero pelotas de futbol</string>
+    <string name="ball_soccer_text">Numero pelotas de fútbol</string>
     <string name="ball_basket_text">Numero pelotas de baloncesto</string>
     <string name="ball_tennis_text">Numero pelotas de tenis</string>
     <string name="ball_baseball_text">Numero pelotas de baisbol</string>
@@ -104,6 +104,6 @@
     <string name="inbox_header">Correo de la tienda</string>
     <string name="your_message">Tus mensajes:</string>
     <string name="delete_message">Borrar mensajes</string>
-    <string name="buy_all">Buy</string>
+    <string name="buy_all">Comprar</string>
 
 </resources>

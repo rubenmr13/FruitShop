@@ -36,7 +36,7 @@
             android:layout_marginTop="30dp"
             android:entries="@array/select_sport"
             app:layout_constraintTop_toBottomOf="@+id/sport_shop"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/text_quantity_selected"
@@ -246,10 +246,11 @@
                     android:id="@+id/basket_image"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     android:onClick="fruitsButtonCLick"
-                    android:src="@drawable/basket" />
+                    android:src="@drawable/basket"
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
                 <TextView
                     android:id="@+id/basket_text"
                     android:layout_width="wrap_content"

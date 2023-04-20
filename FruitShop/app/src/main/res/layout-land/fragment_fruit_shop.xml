@@ -46,7 +46,7 @@
                     android:layout_marginTop="30dp"
                     android:entries="@array/select_fruit"
                     app:layout_constraintTop_toBottomOf="@+id/fruit_shop"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
                 <TextView
                     android:id="@+id/text_quantity_selected"
@@ -110,7 +110,8 @@
                         android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:onClick="fruitsButtonCLick"
-                        android:src="@drawable/basket" />
+                        android:src="@drawable/basket"
+                        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                     <TextView
                         android:id="@+id/basket_text"
