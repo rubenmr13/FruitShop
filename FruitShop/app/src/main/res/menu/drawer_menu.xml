@@ -17,6 +17,5 @@
     <item
         android:id="@+id/basketFragment"
         android:icon="@drawable/basket"
-        android:title="@string/basket_text"
-        app:showAsAction="always" />
+        android:title="@string/basket_text"/>
 </menu>
