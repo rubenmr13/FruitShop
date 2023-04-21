@@ -111,8 +111,6 @@ class FruitShopFragment : Fragment() {
         //seleccionamos el boton de añadir fruta
         binding.addFruit.setOnClickListener {
             fruitShopViewModel.addFruit(quantity_number, this) //añadimos la fruta al bundle
-            /*val newCount = fruitShopViewModel.apple.value?.plus(quantity_number) ?: 1
-            fruitShopViewModel.saveApple(newCount)*/
 
             binding.seekBar.progress=0 //ponemos a 0 el seekBar
             fruitShopViewModel.calculatePriceFruit() //calculamos el precio y lo añadimos al bundle
@@ -133,8 +131,6 @@ class FruitShopFragment : Fragment() {
             findNavController().navigate(R.id.action_fruitShopFragment_to_basketFragment)
         }
 
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_fruit_shop, container, false)
         return binding.root
     }
 
@@ -153,10 +149,8 @@ class FruitShopFragment : Fragment() {
         }
         @SuppressLint("MissingInflatedId")
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            //val inflater = LayoutInflater.from(this@FruitShopFragment)
             val convertview = LayoutInflater.from(context).inflate(R.layout.itemspinner, parent, false)
-            //var convertview = convertView
-           // convertview = inflater.inflate(R.layout.itemspinner, parent, false)
+
 
             val imageView = convertview.findViewById<ImageView>(R.id.imageView)
             val tv1 = convertview.findViewById<TextView>(R.id.item_type)

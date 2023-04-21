@@ -27,11 +27,9 @@ class BasketFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_basket, container, false)
-        //binding = FragmentBasketBinding.inflate(inflater, container, false)
-        //fruitShopViewModel = ViewModelProvider(this).get(FruitShopViewModel::class.java)
+
 
         binding.viewModel = fruitShopViewModel
 
@@ -76,20 +74,12 @@ class BasketFragment : Fragment() {
 
         binding.deleteBasket.setOnClickListener{
             fruitShopViewModel.deleteItemFruit()
-            /*fruitViews(binding.appleText, binding.pearText, binding.orangeText , binding.plumText,binding.appleImage, binding.pearImage,
-                binding.orangeImage, binding.plumImage)*/
 
             fruitShopViewModel.deleteItemFish()
-            /*fishViews(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
-                binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage)*/
 
             fruitShopViewModel.deleteItemMeat()
-            /*meatViews(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
-                binding.chickenImage, binding.pigImage, binding.minceImage)*/
 
             fruitShopViewModel.deleteItemSport()
-            /*viewsSport(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
-                binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage)*/
 
             totalView()
             viewDelete()
@@ -98,20 +88,12 @@ class BasketFragment : Fragment() {
 
         binding.buyAll.setOnClickListener {
             fruitShopViewModel.deleteItemFruit()
-            /*fruitViews(binding.appleText, binding.pearText, binding.orangeText , binding.plumText,binding.appleImage, binding.pearImage,
-                binding.orangeImage, binding.plumImage)*/
 
             fruitShopViewModel.deleteItemFish()
-            /*fishViews(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
-                binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage)*/
 
             fruitShopViewModel.deleteItemMeat()
-            /*meatViews(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
-                binding.chickenImage, binding.pigImage, binding.minceImage)*/
 
             fruitShopViewModel.deleteItemSport()
-            /*viewsSport(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
-                binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage)*/
 
             totalView()
             viewDelete()

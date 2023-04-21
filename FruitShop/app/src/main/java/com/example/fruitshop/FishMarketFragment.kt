@@ -79,7 +79,6 @@ class FishMarketFragment : Fragment() {
                 fruitShopViewModel.saveFish(binding.spinnerFishShop.selectedItem.toString())
                 //usamos el observer de fruit para actualizar las vistas
             }
-
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
@@ -136,8 +135,6 @@ class FishMarketFragment : Fragment() {
         @SuppressLint("MissingInflatedId")
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val convertview = LayoutInflater.from(context).inflate(R.layout.itemspinner, parent, false)
-            //var convertview = convertView
-            // convertview = inflater.inflate(R.layout.itemspinner, parent, false)
 
             val imageView = convertview.findViewById<ImageView>(R.id.imageView)
             val tv1 = convertview.findViewById<TextView>(R.id.item_type)

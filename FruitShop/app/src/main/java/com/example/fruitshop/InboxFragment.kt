@@ -39,7 +39,6 @@ class InboxFragment : Fragment() {
             viewDeleteMessage()
         }
 
-
         return binding.root
     }
 

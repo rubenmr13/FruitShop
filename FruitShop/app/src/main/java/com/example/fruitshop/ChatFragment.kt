@@ -19,10 +19,8 @@ class ChatFragment : Fragment() {
     private lateinit var binding: FragmentChatBinding
     private val fruitShopViewModel: FruitShopViewModel by activityViewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -33,17 +31,11 @@ class ChatFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat, container, false)
 
         fruitShopViewModel.messageChat.observe(viewLifecycleOwner, Observer {
-            //binding.receivedText.text = fruitShopViewModel.textChat.value.toString()
             binding.receivedText.text = fruitShopViewModel.getMessageChat()
         })
 
-
-        //
         fruitShopViewModel.initMessageChat()
         var text_chat = ""
-
-
-
 
         binding.sendText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -59,12 +51,9 @@ class ChatFragment : Fragment() {
             }
         })
 
-        //val text_chat = binding.sendText.toString()
-
         binding.sendButton.setOnClickListener{
             if(text_chat!=""){
                 fruitShopViewModel.addMessageChat(text_chat)
-                //binding.receivedText.text = fruitShopViewModel.getTextChat()
                 binding.sendText.setText("") //borramos lo que hemos escrito en el editText
             }
         }

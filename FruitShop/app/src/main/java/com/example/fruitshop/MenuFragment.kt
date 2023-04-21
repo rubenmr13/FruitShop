@@ -17,27 +17,16 @@ class MenuFragment : Fragment() {
 
     private lateinit var binding: FragmentMenuBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false)
-
-        //boton usuario
- /*       binding.userImage.setOnClickListener {
-            //findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
-        }*/
 
         //boton fruteria
         binding.fruitImage.setOnClickListener { //Hecho
-            //Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_fruitShopFragment2)
             findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
         }
 
@@ -52,21 +41,6 @@ class MenuFragment : Fragment() {
         binding.sportImage.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_sportShopFragment)
         }
-
- /*       binding.inboxImage.setOnClickListener {
-            //findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
-        }
-
-        binding.basketImage.setOnClickListener { //Hecho
-            findNavController().navigate(R.id.action_menuFragment_to_basketFragment)
-        }
-
-        binding.chatImage.setOnClickListener {
-            //findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
-        }*/
-
-
-
 
         return binding.root
     }
