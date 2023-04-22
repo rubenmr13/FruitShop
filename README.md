@@ -5,80 +5,95 @@
 
 <br>
 
->## **FruitShop**
+>## **FruitShop V2**
 
-Esta aplicación ha sido creada con el propósito de crear una app para una frutería.
-Inicialmente, al ejecutar la aplicación aparecerá un titulo con el nombre de la frutería, un Spinner para seleccionar la fruta que queremos añadir, una cesta que inicialmente estará vacía y se irá actualizando de forma automática cada vez que se añada una fruta. Al final de la cesta aparecerá el coste total de todos los productos que se han añadido. 
+Esta aplicación ha sido creada con el propósito de mejorar la antigua aplicacion de la frutería implementando nuevas funcionalidades.
 
-Inicialmente este Spinner estará en posición "Select the fruit". Al desplegar el Spinner aparecerá una foto de cada fruta junto al nombre. Al elegir una fruta aparecerá de forma automática un SeekBar donde se podrá elegir la cantidad de producto que queramos, un texto donde aparecerá de forma dinámica el número de elementos que se van seleccionando cuando se desliza el SeekBar y otro texto donde aparecerá el importe del producto que se ha seleccionado. También aparecerá un botón de color azul para añadir el producto a la cesta.
+<br>
+
+Al ejecutar la aplicación, lo primero que veremos será la pantalla principal, que nos brindará acceso a diferentes secciones de la tienda, como la frutería, carnicería, pescadería y la tienda de deportes. Al seleccionar la imagen de alguna de estas secciones, la aplicación nos llevará directamente a la pantalla correspondiente.
+
+En la parte de navegación se ha implementado un práctico "Drawer Menu", lo que facilita la navegación en la aplicación y permite al usuario acceder rápidamente a cualquier sección disponible en el "Drawer Menu".
+
+<br>
+
+Al desplegar el "Drawer Menu", en primer lugar aparecerá en la parte superior el logo de la empresa. Debajo de este, se encuentran cuatro opciones de navegación que nos permiten acceder a las diferentes secciones de la aplicación. Cada opción se representa con un icono específico y su respectivo nombre:
+
+1. El primer icono que aparece en el "Drawer Menu" es el "User". Al seleccionar esta opción, la aplicación nos llevará a un formulario en el que se puede iniciar sesión en la cuenta de usuario. Este formulario consta de dos campos: "User" y "Password". Si el usuario ya tiene una cuenta, puede ingresar su información en los campos correspondientes y luego hacer clic en el botón "Sign In" para acceder a la cuenta.
+
+También se puede crear una cuenta de usuario haciendo clic en el botón "Sign Up" y completando los campos necesarios en el formulario. En ambos casos, si los campos de usuario y contraseña no se han completado correctamente, no se podrá iniciar sesión ni registrarse. Una vez que se ha iniciado sesión o registrado una cuenta nueva, la aplicación nos llevará de vuelta a la pantalla principal.
 
 
-Cuando se pulsa el botón y se añade un producto a la cesta, esta se actualiza de forma automática mostrando la foto y nombre del producto seleccionado junto con la cantidad. Al final de la cesta aparecerá el importe total de todos los productos de la cesta, este importe se actualiza de forma instantánea cada vez que se añade un producto a la cesta. 
+2. El segundo icono que aparece en el "Drawer Menu" es el "Chat". Al seleccionar esta opción, la aplicación nos llevará a una pantalla de chat simulado donde el usuario puede interactuar con la tienda. El usuario puede escribir mensajes en el campo de entrada y enviarlos presionando el botón "Enviar". Los mensajes aparecerán en la ventana de chat, debajo del último mensaje enviado.
 
-Cuando el programa detecte que la cesta contiene un producto aparecerá un botón de color rojo dándole la posibilidad al usuario de vaciar la cesta. Al vaciar la cesta todos los productos que había en esta se eliminarán.
+Si el usuario sale de la pantalla del "Chat" y vuelve a ingresar, los mensajes que haya escrito anteriormente se habrán guardado y aparecerán en el chat. Esta función permite al usuario continuar con la conversación desde donde la dejó anteriormente.  
 
-La aplicación permite el cambio de orientación, es decir, permite que se utilice de forma horizontal y vertical.
 
-La aplicación tendrá persistencia de la información a cambios de orientación.
+3. El tercer icono que aparece en el "Drawer Menu" es el "Inbox". Al seleccionar esta opción, la aplicación nos llevará al inbox de la tienda, donde el usuario puede ver todos los mensajes enviados.
+Si el usuario ha enviado algún mensaje, se proporcionará un botón que permite al usuario borrar todos los mensajes enviados.
 
-La aplicación soporta el multilenguaje Eng/Esp según la configuración del teléfono.
 
-Al final de la pantalla aparecerá la firma del autor de la aplicación.
+4. El cuarto icono que aparece en el "Drawer Menu" es el "Total Basket". Al seleccionar esta opción, la aplicación llevará al usuario a la pantalla que muestra la lista de todos los productos que han sido seleccionados en la frutería, carnicería, pescadería y tienda de deportes, junto con la cantidad de cada item que se ha seleccionado.
+
+En la parte inferior de la cesta, aparecerá el precio total de la compra. Esta función permite al usuario tener una vista general de todo lo que ha seleccionado y asegurarse de que no haya errores.
+
+Se proporcionarán dos botones, uno para vaciar la cesta y otro para finalizar la compra. El botón "Vaciar cesta" permite al usuario eliminar todos los productos que ha seleccionado. El botón "Comprar cesta" permite al usuario "finalizar la compra".
+
+
+<br>
+
+Si accedemos a la sección de frutería desde la pantalla principal, seremos llevados a una nueva pantalla que muestra, un spinner con el que podemos seleccionar la fruta deseada, una cesta vacía y un icono que nos llevará a la pantalla de "Total Basket".
+Al desplegar el spinner, se mostrarán las frutas disponibles con sus respectivas imágenes. Al seleccionar una fruta, aparecerá un "SeekBar" que nos permitirá seleccionar la cantidad que deseamos de la fruta elegida. Una vez seleccionada la cantidad, se mostrará el precio de la fruta asociado a la cantidad elegida. Si pulsamos el botón "Add", la fruta será añadida a la cesta. La cesta se actualizará y mostrará la foto del producto y la cantidad seleccionada. Además, se actualizará el precio de la cesta de frutas y el precio total de la compra.
+La aplicación proporcionará la opción de vaciar la cesta de frutas solo si hay elementos en ella.
+Si seleccionamos "Select the fruit" en el spinner (el elemento neutro), los elementos para añadir una fruta como el SeekBar, botón "Add"... desaparecerán de la vista del usuario.
+Si seleccionamos el icono "Total Basket", seremos llevados a la cesta total donde aparecerán todos los elementos de cualquier sección que hayamos seleccionado para comprar, junto con el precio total de toda la compra.
+
+<br>
+
+La pescadería, la carnicería y la tienda de deportes, tienen la misma funcionalidad que la frutería pero personalizada para cada sección, ofreciendo los productos correspondientes a cada una de ellas y respetando los precios de la cesta de cada sección.
+
+<br>
+
+La aplicación garantiza la persistencia de la información en todo momento. Lo que significa que los productos seleccionados, las cantidades elegidas, los precios y otros datos relevantes se mantienen guardados incluso en caso de que se produzcan cambios de configuración en el dispositivo móvil. De esta manera, el usuario puede continuar desde donde dejó su actividad en la aplicación sin perder información importante.
+
+<br>
+
+Cuando accedamos a cualquiera de las secciones de la aplicación, se mostrará automáticamente un botón de "Atrás" en lugar del "Drawer Menu". Esto nos permitirá regresar fácilmente a la pantalla anterior.
 
 <br>
 
 >## Extras
 
-Los extras que se han incluido en la aplicación y en la práctica son:
+Los extras que se han incluido en la aplicación son:
 
-* Persistencia de la información entre cambios de orientación.
+* Soporte multilenguaje Inglés/Español según la configuración del teléfono.
+* La aplicacion permite su funcionamiento tanto en horizontal como en vertical
+* Las pantallas horizontal y vertical tendrán un layout diferente acorde con el espacio proporcionado
 * Fotografía del producto en el spinner.
 * Fotografía del producto en la cesta.
-* Las pantallas horizontal y vertical tendrán un layout diferente acorde con el espacio proporcionado
-* Soporte multilenguaje Eng/Esp según configuración del teléfono.
-* Posibilidad de vaciar la cesta gracias a un botón
 * Evitar tener que pulsar el botón para seleccionar una fruta en el Spinner
-* Prueba de concepto, limitada a cuatro frutas.
+* "Flecha Hacia Atrás" que permite volver a la pantalla anterior 
+* Cambio automatico del "Drawer Menu" por una "Flecha Hacia Atrás"
+* Posibilidad de vaciar la cesta de una sección.
+* Posibilidad de vaciar la cesta total.
+* No permitir que el usuario inicie sesion o cree una cuenta si todos los campos no estan rellenos.
+* Boton dentro del Inbox que permite borrar los mensajes escritos por el usuario
+* Logica de negocio del Chat
+* Logica de negocio del Inbox
+* Logica de negicio del User
+* Persistencia de la información entre cambios de orientación
+
 * Mejora que haga la pantalla más atractiva desde el punto de vista funcional como:
+    * Logo de la empresa
+    * Cambio de color de los elementos en función del fragment
     * Delimitación de la cesta entre barras
+    * Integracion de iconos en las respectivas secciones
     * Letras de distinto tamaño y colores
     * Botones de diferentes colores en función de su utilidad 
     * Cambio de color del SeekBar 
+    * Cambio de nombre del Navigation en función del fragment 
+    
 
-
-### Spinner
-
-El Spinner mostrará 5 opciones a elegir , 4 frutas y un elemento neutro "Select the fruit". Cuando este elemento está presente desaparece en pantalla todos los elementos que están relacionados con la selección de la fruta como por ejemplo, el SeekBar, la cantidad de producto seleccionado, el precio de ese producto seleccionado y el botón de añadir a la cesta.
-
-Al seleccionar una fruta en el spinner se restablecen todos los elementos necesarios para añadir una fruta.
-
-El spinner contendrá una foto del producto junto con el nombre del producto.
-
-<br>
-
-### SeekBar
-
-El SeekBar se utilizará para seleccionar la cantidad de producto que se desea añadir a la cesta, el valor máximo del es de 100. A medida que se va deslizando el SeekBar para seleccionar el producto cambiará de forma automática el número de producto y el precio en función de la cantidad seleccionada.
-
-<br>
-
-### Botón Add
-
-La utilidad de este botón será la de añadir el producto que se ha seleccionado en el SeekBar a la cesta.
-
-<br>
-
-### Cesta 
-
-La cesta será dinámica, es decir, a medida que se van añadiendo los productos, la cesta va aumentando su tamaño.
-En la cesta aparecerá todos los productos seleccionados junto a una fotografía, el nombre del producto seleccionado y la cantidad.
-Al final de la cesta aparecerá el coste total de todos los productos que se han añadido a la cesta
-
-<br>
-
-### Botón Delete Basket
-
-Debajo de la cesta, cuando esta contenga algún producto aparecerá un botón de color rojo permitiendo al usuario vaciar la cesta. Cuando la cesta esté vacía este botón no será visible.
 
 
 >## Imágenes
