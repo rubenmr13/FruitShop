@@ -20,12 +20,10 @@ En la parte de navegación se ha implementado un práctico "Drawer Menu", lo que
 Al desplegar el "Drawer Menu", en primer lugar aparecerá en la parte superior el logo de la empresa. Debajo de este, se encuentran cuatro opciones de navegación que nos permiten acceder a las diferentes secciones de la aplicación. Cada opción se representa con un icono específico y su respectivo nombre:
 
 1. El primer icono que aparece en el "Drawer Menu" es el "User". Al seleccionar esta opción, la aplicación nos llevará a un formulario en el que se puede iniciar sesión en la cuenta de usuario. Este formulario consta de dos campos: "User" y "Password". Si el usuario ya tiene una cuenta, puede ingresar su información en los campos correspondientes y luego hacer clic en el botón "Sign In" para acceder a la cuenta.
-
 También se puede crear una cuenta de usuario haciendo clic en el botón "Sign Up" y completando los campos necesarios en el formulario. En ambos casos, si los campos de usuario y contraseña no se han completado correctamente, no se podrá iniciar sesión ni registrarse. Una vez que se ha iniciado sesión o registrado una cuenta nueva, la aplicación nos llevará de vuelta a la pantalla principal.
 
 
 2. El segundo icono que aparece en el "Drawer Menu" es el "Chat". Al seleccionar esta opción, la aplicación nos llevará a una pantalla de chat simulado donde el usuario puede interactuar con la tienda. El usuario puede escribir mensajes en el campo de entrada y enviarlos presionando el botón "Enviar". Los mensajes aparecerán en la ventana de chat, debajo del último mensaje enviado.
-
 Si el usuario sale de la pantalla del "Chat" y vuelve a ingresar, los mensajes que haya escrito anteriormente se habrán guardado y aparecerán en el chat. Esta función permite al usuario continuar con la conversación desde donde la dejó anteriormente.  
 
 
@@ -34,9 +32,7 @@ Si el usuario ha enviado algún mensaje, se proporcionará un botón que permite
 
 
 4. El cuarto icono que aparece en el "Drawer Menu" es el "Total Basket". Al seleccionar esta opción, la aplicación llevará al usuario a la pantalla que muestra la lista de todos los productos que han sido seleccionados en la frutería, carnicería, pescadería y tienda de deportes, junto con la cantidad de cada item que se ha seleccionado.
-
 En la parte inferior de la cesta, aparecerá el precio total de la compra. Esta función permite al usuario tener una vista general de todo lo que ha seleccionado y asegurarse de que no haya errores.
-
 Se proporcionarán dos botones, uno para vaciar la cesta y otro para finalizar la compra. El botón "Vaciar cesta" permite al usuario eliminar todos los productos que ha seleccionado. El botón "Comprar cesta" permite al usuario "finalizar la compra".
 
 
