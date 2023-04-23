@@ -149,3 +149,5 @@ Fotos de la aplicación al ejecutarse:
 
    * ![menuEspañolVetical](images/españolVertical.png)
    * ![menuEspañolHorizontal](images/españolHorizontal.png)
+
+   
