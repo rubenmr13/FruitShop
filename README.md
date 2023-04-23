@@ -1,6 +1,6 @@
 # LABORATORIO DE SISTEMAS MOVILES Y UBICUOS 
 
-#### *Fecha: 22/04/2023*
+#### *Fecha: 23/04/2023*
 #### *Autor : Rubén Manzanas Rodríguez*
 
 <br>
@@ -79,7 +79,6 @@ Los extras que se han incluido en la aplicación son:
 * Logica de negicio del User
 * Logica de negocio del Chat
 * Logica de negocio del Inbox
-* Persistencia de la información entre cambios de orientación
 
 
 * Mejora que haga la pantalla más atractiva desde el punto de vista funcional como:
@@ -93,12 +92,9 @@ Los extras que se han incluido en la aplicación son:
     * Cambio de nombre del Navigation en función del fragment 
     
 
->## Explicacion Ficheros
 
-Para la utilizacion deL ViewModel y LiveData
+>## Explicacion y Ficheros
 
-
->## Explicacion 
 Para la realizacion de la practica ha sido necesario introducir nuevas librerias y nuevas conceptos.
 
 1. ViewModel y LiveData:
