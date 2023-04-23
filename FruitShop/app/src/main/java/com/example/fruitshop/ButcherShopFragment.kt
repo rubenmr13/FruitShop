@@ -16,7 +16,7 @@ import com.example.fruitshop.databinding.FragmentButcherShopBinding
 class ButcherShopFragment : Fragment() {
 
     private lateinit var binding: FragmentButcherShopBinding
-    private val fruitShopViewModel: FruitShopViewModel by activityViewModels()
+    private val shopViewModel: ShopViewModel by activityViewModels()
 
     var meat = mutableListOf<String>() //no quitar
     lateinit var images : List<Int> //no quitar
@@ -34,27 +34,27 @@ class ButcherShopFragment : Fragment() {
 
         var quantity_number = 0
 
-        fruitShopViewModel.totalMeat.observe(viewLifecycleOwner, Observer { newTotalMeat ->
+        shopViewModel.totalMeat.observe(viewLifecycleOwner, Observer { newTotalMeat ->
             binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",newTotalMeat) +"€"
         })
 
-        fruitShopViewModel.cow.observe(viewLifecycleOwner, Observer { newCow ->
+        shopViewModel.cow.observe(viewLifecycleOwner, Observer { newCow ->
             binding.cowText.text = getString(R.string.cow_text) + " " +newCow.toString() ////aqui hacemos lo del apple
         })
 
-        fruitShopViewModel.chicken.observe(viewLifecycleOwner, Observer { newChicken ->
+        shopViewModel.chicken.observe(viewLifecycleOwner, Observer { newChicken ->
             binding.chickenText.text = getString(R.string.chicken_text) + " " + newChicken.toString()
         })
 
-        fruitShopViewModel.pig.observe(viewLifecycleOwner, Observer { newPig ->
+        shopViewModel.pig.observe(viewLifecycleOwner, Observer { newPig ->
             binding.pigText.text = getString(R.string.pig_text) + " " + newPig.toString()
         })
 
-        fruitShopViewModel.mince.observe(viewLifecycleOwner, Observer { newMince ->
+        shopViewModel.mince.observe(viewLifecycleOwner, Observer { newMince ->
             binding.minceText.text = getString(R.string.mince_text) + " " + newMince.toString()
         })
 
-        fruitShopViewModel.meat.observe(viewLifecycleOwner, Observer{ newMeat ->
+        shopViewModel.meat.observe(viewLifecycleOwner, Observer{ newMeat ->
             if(newMeat == getString(R.string.selected_meat)){
                 noSelectedMeat()
             }else{ //si se ha seleccionado una fruta mostramos esa fruta
@@ -62,7 +62,7 @@ class ButcherShopFragment : Fragment() {
             }
         })
 
-        fruitShopViewModel.saveMeat(getString(R.string.selected_meat))
+        shopViewModel.saveMeat(getString(R.string.selected_meat))
 
         meat = initMeat()
         images = initImage()
@@ -78,7 +78,7 @@ class ButcherShopFragment : Fragment() {
                 views(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
                     binding.chickenImage, binding.pigImage, binding.minceImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
 
-                fruitShopViewModel.saveMeat(binding.spinnerButcherShop.selectedItem.toString())
+                shopViewModel.saveMeat(binding.spinnerButcherShop.selectedItem.toString())
                 //usamos el observer de fruit para actualizar las vistas
             }
 
@@ -90,7 +90,7 @@ class ButcherShopFragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 quantity_number = progress
                 binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/10"
-                binding.priceMeatText.text = getString(R.string.price_meat_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateMeat(quantity_number, this@ButcherShopFragment)) +"€"
+                binding.priceMeatText.text = getString(R.string.price_meat_text)+" "+ String.format("%.2f",shopViewModel.calculateMeat(quantity_number, this@ButcherShopFragment)) +"€"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // Este método se llama cuando el usuario toca la SeekBar
@@ -102,16 +102,16 @@ class ButcherShopFragment : Fragment() {
 
         //seleccionamos el boton de añadir fruta
         binding.addMeat.setOnClickListener {
-            fruitShopViewModel.addMeat(quantity_number, this@ButcherShopFragment) //añadimos la fruta al bundle
+            shopViewModel.addMeat(quantity_number, this@ButcherShopFragment) //añadimos la fruta al bundle
             binding.seekBar.progress=0 //ponemos a 0 el seekBar
-            fruitShopViewModel.calculatePriceMeat() //calculamos el precio y lo añadimos al bundle
+            shopViewModel.calculatePriceMeat() //calculamos el precio y lo añadimos al bundle
             views(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
                 binding.chickenImage, binding.pigImage, binding.minceImage, binding.deleteBasket)
         }
 
         //si seleccionamos el boton de vaciar cesta
         binding.deleteBasket.setOnClickListener{
-            fruitShopViewModel.deleteItemMeat()
+            shopViewModel.deleteItemMeat()
             binding.seekBar.progress=0
             views(binding.cowText, binding.chickenText, binding.pigText, binding.minceText, binding.cowImage,
                 binding.chickenImage, binding.pigImage, binding.minceImage, binding.deleteBasket)
@@ -159,7 +159,7 @@ class ButcherShopFragment : Fragment() {
         binding.priceMeatText.visibility = View.GONE
         binding.deleteBasket.visibility = View.GONE
 
-        if((fruitShopViewModel.totalMeat.value ?: 0.0) > 0.0){
+        if((shopViewModel.totalMeat.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
@@ -174,14 +174,14 @@ class ButcherShopFragment : Fragment() {
         binding.priceMeatText.visibility = View.VISIBLE
         binding.seekBar.progress = 0 //ponemos a 0 el seekBar
 
-        if((fruitShopViewModel.totalMeat.value ?: 0.0) > 0.0){
+        if((shopViewModel.totalMeat.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
         }
 
         binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/10"
-        binding.priceMeatText.text = getString(R.string.price_meat_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateMeat(quantity_number, this )) +"€"
+        binding.priceMeatText.text = getString(R.string.price_meat_text)+" "+ String.format("%.2f",shopViewModel.calculateMeat(quantity_number, this )) +"€"
     }
 
     fun active_views(meat_text: TextView, meat_image: ImageView){
@@ -199,27 +199,27 @@ class ButcherShopFragment : Fragment() {
               mince_text: TextView, cow_image: ImageView, chicken_image: ImageView,
               pig_image: ImageView, mince_image: ImageView, delete_basket: Button
     ){
-        if((fruitShopViewModel.cow.value ?: 0) > 0){
+        if((shopViewModel.cow.value ?: 0) > 0){
             active_views(cow_text, cow_image)
         }else{
             desactive_views(cow_text, cow_image)
         }
-        if((fruitShopViewModel.chicken.value ?: 0) > 0){
+        if((shopViewModel.chicken.value ?: 0) > 0){
             active_views(chicken_text, chicken_image)
         }else{
             desactive_views(chicken_text, chicken_image)
         }
-        if((fruitShopViewModel.pig.value ?: 0) > 0){
+        if((shopViewModel.pig.value ?: 0) > 0){
             active_views(pig_text, pig_image)
         }else{
             desactive_views(pig_text, pig_image)
         }
-        if((fruitShopViewModel.mince.value ?: 0) > 0){
+        if((shopViewModel.mince.value ?: 0) > 0){
             active_views(mince_text, mince_image)
         }else{
             desactive_views(mince_text, mince_image)
         }
-        if((fruitShopViewModel.totalMeat.value ?: 0.0) > 0.0){
+        if((shopViewModel.totalMeat.value ?: 0.0) > 0.0){
             delete_basket.visibility = View.VISIBLE
         }else{
             delete_basket.visibility = View.GONE

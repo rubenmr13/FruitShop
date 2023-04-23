@@ -122,8 +122,8 @@
 
     //USER
     <string name="user">User</string>
-    <string name="sing_up">Sing up</string>
-    <string name="sign_in">Sing in</string>
+    <string name="sing_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
     <string name="password">Password</string>
     <string name="welcome_user">Register</string>
     <string name="register_user">Register User</string>

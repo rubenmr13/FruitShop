@@ -13,7 +13,7 @@ import com.example.fruitshop.databinding.FragmentInboxBinding
 class InboxFragment : Fragment() {
 
     private lateinit var binding: FragmentInboxBinding
-    private val fruitShopViewModel: FruitShopViewModel by activityViewModels()
+    private val shopViewModel: ShopViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +24,17 @@ class InboxFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_inbox, container, false)
 
         viewDeleteMessage()
 
-        fruitShopViewModel.messageChat.observe(viewLifecycleOwner, Observer {
-            binding.messageInbox.text = fruitShopViewModel.getMessageChat()
+        shopViewModel.messageChat.observe(viewLifecycleOwner, Observer {
+            binding.messageInbox.text = shopViewModel.getMessageChat()
             viewDeleteMessage()
         })
 
         binding.deleteMessage.setOnClickListener{
-            fruitShopViewModel.deleteMessage()
+            shopViewModel.deleteMessage()
             viewDeleteMessage()
         }
 

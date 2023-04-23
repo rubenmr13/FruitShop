@@ -25,8 +25,7 @@ class MenuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false)
 
-        //boton fruteria
-        binding.fruitImage.setOnClickListener { //Hecho
+        binding.fruitImage.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_fruitShopFragment2)
         }
 

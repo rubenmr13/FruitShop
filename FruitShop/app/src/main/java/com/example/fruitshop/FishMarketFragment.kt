@@ -16,7 +16,7 @@ import com.example.fruitshop.databinding.FragmentFishMarketBinding
 class FishMarketFragment : Fragment() {
 
     private lateinit var binding: FragmentFishMarketBinding
-    private val fruitShopViewModel: FruitShopViewModel by activityViewModels()
+    private val shopViewModel: ShopViewModel by activityViewModels()
 
     var fish = mutableListOf<String>() //no quitar
     lateinit var images : List<Int> //no quitar
@@ -33,27 +33,27 @@ class FishMarketFragment : Fragment() {
 
         var quantity_number = 0
 
-        fruitShopViewModel.totalFish.observe(viewLifecycleOwner, Observer { newTotalFish ->
+        shopViewModel.totalFish.observe(viewLifecycleOwner, Observer { newTotalFish ->
             binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",newTotalFish) +"€"
         })
 
-        fruitShopViewModel.salmon.observe(viewLifecycleOwner, Observer { newSalmon ->
+        shopViewModel.salmon.observe(viewLifecycleOwner, Observer { newSalmon ->
             binding.salmonText.text = getString(R.string.salmon_text) + " " +newSalmon.toString() ////aqui hacemos lo del apple
         })
 
-        fruitShopViewModel.gilt_head_bream.observe(viewLifecycleOwner, Observer { newGilt_head_bream ->
+        shopViewModel.gilt_head_bream.observe(viewLifecycleOwner, Observer { newGilt_head_bream ->
             binding.giltHeadBreamText.text = getString(R.string.gilt_head_bream_text) + " " + newGilt_head_bream.toString()
         })
 
-        fruitShopViewModel.sea_bass.observe(viewLifecycleOwner, Observer { newSea_bass ->
+        shopViewModel.sea_bass.observe(viewLifecycleOwner, Observer { newSea_bass ->
             binding.seaBassText.text = getString(R.string.sea_bass_text) + " " + newSea_bass.toString()
         })
 
-        fruitShopViewModel.red_mullet.observe(viewLifecycleOwner, Observer { newRed_mullet ->
+        shopViewModel.red_mullet.observe(viewLifecycleOwner, Observer { newRed_mullet ->
             binding.redMulletText.text = getString(R.string.red_mullet_text) + " " + newRed_mullet.toString()
         })
 
-        fruitShopViewModel.fish.observe(viewLifecycleOwner, Observer{ newFish ->
+        shopViewModel.fish.observe(viewLifecycleOwner, Observer{ newFish ->
             if(newFish == getString(R.string.selected_fish)){
                 noSelectedFish()
             }else{ //si se ha seleccionado una fruta mostramos esa fruta
@@ -61,7 +61,7 @@ class FishMarketFragment : Fragment() {
             }
         })
 
-        fruitShopViewModel.saveFish(getString(R.string.selected_fish))
+        shopViewModel.saveFish(getString(R.string.selected_fish))
 
         fish = initFish()
         images = initImage()
@@ -69,14 +69,12 @@ class FishMarketFragment : Fragment() {
         val adapter = ImageFishAdapt()
         binding.spinnerFishShop.adapter = adapter
 
-
-        //vemos que hemos seleccionado con el spinner
         binding.spinnerFishShop.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
                 views(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                     binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
-                fruitShopViewModel.saveFish(binding.spinnerFishShop.selectedItem.toString())
+                shopViewModel.saveFish(binding.spinnerFishShop.selectedItem.toString())
                 //usamos el observer de fruit para actualizar las vistas
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -86,7 +84,7 @@ class FishMarketFragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 quantity_number = progress
                 binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/10"
-                binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateFish(quantity_number, this@FishMarketFragment)) +"€"
+                binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",shopViewModel.calculateFish(quantity_number, this@FishMarketFragment)) +"€"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // Este método se llama cuando el usuario toca la SeekBar
@@ -96,18 +94,16 @@ class FishMarketFragment : Fragment() {
             }
         })
 
-        //seleccionamos el boton de añadir fruta
         binding.addFish.setOnClickListener {
-            fruitShopViewModel.addFish(quantity_number, this) //añadimos la fruta al bundle
+            shopViewModel.addFish(quantity_number, this) //añadimos la fruta al bundle
             binding.seekBar.progress=0 //ponemos a 0 el seekBar
-            fruitShopViewModel.calculatePriceFish() //calculamos el precio y lo añadimos al bundle
+            shopViewModel.calculatePriceFish() //calculamos el precio y lo añadimos al bundle
             views(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                 binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage, binding.deleteBasket)
         }
 
-        //si seleccionamos el boton de vaciar cesta
         binding.deleteBasket.setOnClickListener{
-            fruitShopViewModel.deleteItemFish()
+            shopViewModel.deleteItemFish()
             binding.seekBar.progress=0
             views(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                 binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage, binding.deleteBasket)
@@ -153,7 +149,7 @@ class FishMarketFragment : Fragment() {
         binding.priceFishText.visibility = View.GONE
         binding.deleteBasket.visibility = View.GONE
 
-        if((fruitShopViewModel.totalFish.value ?: 0.0) > 0.0){
+        if((shopViewModel.totalFish.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
@@ -167,14 +163,14 @@ class FishMarketFragment : Fragment() {
         binding.priceFishText.visibility = View.VISIBLE
         binding.seekBar.progress = 0 //ponemos a 0 el seekBar
 
-        if((fruitShopViewModel.totalFish.value ?: 0.0) > 0.0){
+        if((shopViewModel.totalFish.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
         }
 
         binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/10"
-        binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateFish(quantity_number, this )) +"€"
+        binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",shopViewModel.calculateFish(quantity_number, this )) +"€"
     }
 
     fun active_views(fish_text: TextView, fish_image: ImageView){
@@ -191,34 +187,34 @@ class FishMarketFragment : Fragment() {
     fun views(salmon_text: TextView, gilt_head_bream_text: TextView, sea_bass_text: TextView,
               red_mullet_text: TextView, salmon_image: ImageView, gilt_head_bream_image: ImageView,
               sea_bass_image: ImageView, red_mullet_image: ImageView, delete_basket: Button){
-        if((fruitShopViewModel.salmon.value ?: 0) > 0){
+        if((shopViewModel.salmon.value ?: 0) > 0){
             active_views(salmon_text, salmon_image)
         }else{
             desactive_views(salmon_text, salmon_image)
         }
-        if((fruitShopViewModel.gilt_head_bream.value ?: 0) > 0){
+        if((shopViewModel.gilt_head_bream.value ?: 0) > 0){
             active_views(gilt_head_bream_text, gilt_head_bream_image)
         }else{
             desactive_views(gilt_head_bream_text, gilt_head_bream_image)
         }
-        if((fruitShopViewModel.sea_bass.value ?: 0) > 0){
+        if((shopViewModel.sea_bass.value ?: 0) > 0){
             active_views(sea_bass_text, sea_bass_image)
         }else{
             desactive_views(sea_bass_text, sea_bass_image)
         }
-        if((fruitShopViewModel.red_mullet.value ?: 0) > 0){
+        if((shopViewModel.red_mullet.value ?: 0) > 0){
             active_views(red_mullet_text, red_mullet_image)
         }else{
             desactive_views(red_mullet_text, red_mullet_image)
         }
-        if((fruitShopViewModel.totalFish.value ?: 0.0) > 0.0){
+        if((shopViewModel.totalFish.value ?: 0.0) > 0.0){
             delete_basket.visibility = View.VISIBLE
         }else{
             delete_basket.visibility = View.GONE
         }
     }
 
-    // inicializa la lista del spinner //no se puede quitar
+
     fun initFish(): MutableList<String>{
         val fish = mutableListOf<String>()
         fish.add(getString(R.string.selected_fish))
@@ -229,7 +225,6 @@ class FishMarketFragment : Fragment() {
         return fish
     }
 
-    //inicializar las imagenes //no se puede quitar
     fun initImage(): List<Int> {
         return listOf(
             R.drawable.white,

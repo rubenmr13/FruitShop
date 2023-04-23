@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type = "com.example.fruitshop.FruitShopViewModel"/>
+            type = "com.example.fruitshop.ShopViewModel"/>
     </data>
     <ScrollView
         android:layout_width="match_parent"
@@ -513,9 +513,6 @@
                     android:text="@string/delete_basket"
                     tools:ignore="MissingConstraints" />
             </LinearLayout>
-
-
-
         </LinearLayout>
 
     </ScrollView>

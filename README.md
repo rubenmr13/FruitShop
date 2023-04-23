@@ -1,6 +1,6 @@
 # LABORATORIO DE SISTEMAS MOVILES Y UBICUOS 
 
-#### *Fecha: 08/03/2023*
+#### *Fecha: 22/04/2023*
 #### *Autor : Rubén Manzanas Rodríguez*
 
 <br>
@@ -90,6 +90,9 @@ Los extras que se han incluido en la aplicación son:
     * Cambio de nombre del Navigation en función del fragment 
     
 
+>## Explicacion Ficheros
+
+Para la utilizacion deL ViewModel y LiveData
 
 
 >## Imágenes
@@ -100,23 +103,49 @@ Fotos de la aplicación al ejecutarse:
 <br>
 
 
-* Vertical: 
+* ## Vertical: 
 
 
-    * ![patalla_principal](images/patalla_principal.png)
+    * ![menu](images/horizontal/menu.png)
+    * ![drawerMenu](images/horizontal/drawerMenu.png)
+    * ![user](images/horizontal/user.png)
+    * ![chat](images/horizontal/chat.png)
+    * ![inbox](images/horizontal/inbox.png)
+    * ![fishShop](images/horizontal/fish1.png)
+    * ![fishShop1](images/horizontal/fish2.png)
+    * ![fishShop2](images/horizontal/fish3.png)
+    * ![fruitShop1](images/horizontal/fruit.png)
+    * ![butcherShop](images/horizontal/meat.png)
+    * ![sportShop](images/horizontal/sport.png)
+    * ![basketTotal](images/horizontal/basketTotal.png)
 
-    * ![seleccionar_fruta](images/seleccionar_fruta.png)
+<br>
 
-    * ![seleccionar_fruta](images/seleccionando_fruta.png)
+<br>
 
-* Horizontal:
+* ## Horizontal:
 
-    * ![horizontal_pagina_principal](images/horizontal_pagina_principal.png)
+    * ![menu](images/vertical/menuLand.png)
+    * ![drawerMenu](images/vertical/drawerMenuLand.png)
+    * ![drawerMenu1](images/vertical/drawerMenuLand1.png)
+    * ![user](images/vertical/userLand.png)
+    * ![chat](images/vertical/chatLand.png)
+    * ![inbox](images/vertical/inboxLand.png)
+    * ![fruitShop1](images/vertical/fruitLand.png)
+    * ![fruitShop2](images/vertical/fruitLand2.png)
+    * ![fruitShop3](images/vertical/fruitLand3.png)
+    * ![fishShop](images/vertical/fishLand.png)
+    * ![butcherShop](images/vertical/meatLand.png)
+    * ![sportShop](images/vertical/sportLand.png)
+    * ![basketTotal](images/vertical/basketLand.png)
 
-    * ![seleccionando_fruta_horizontal](images/seleccionando_fruta_horizontal.png)
 
-    * ![seleccionarhorizontal_fruta](images/horizontal.png)
+<br>
 
-*   Aplicación en ingles: 
+<br>
 
-   * ![seleccionarhorizontal_fruta](images/App_Ingles.png)
+* ## Aplicación en español: 
+* En esta sección se mostrarán dos imágenes ya que la aplicación es la misma que en inglés, solo que en español.
+
+   * ![menuEspañolVetical](images/españolVertical.png)
+   * ![menuEspañolHorizontal](images/españolHorizontal.png)
