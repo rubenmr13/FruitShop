@@ -17,7 +17,7 @@ class SportShopFragment : Fragment() {
 
 
     private lateinit var binding: FragmentSportShopBinding
-    private val shopViewModel: ShopViewModel by activityViewModels()
+    private val sportShopViewModel: SportShopViewModel by activityViewModels()
 
     var sport = mutableListOf<String>() //no quitar
     lateinit var images : List<Int> //no quitar
@@ -32,27 +32,27 @@ class SportShopFragment : Fragment() {
 
         var quantity_number = 0
 
-        shopViewModel.totalSport.observe(viewLifecycleOwner, Observer { newTotalSport ->
+        sportShopViewModel.totalSport.observe(viewLifecycleOwner, Observer { newTotalSport ->
             binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",newTotalSport) +"€"
         })
 
-        shopViewModel.ballSoccer.observe(viewLifecycleOwner, Observer { newBallSoccer ->
+        sportShopViewModel.ballSoccer.observe(viewLifecycleOwner, Observer { newBallSoccer ->
             binding.ballSoccerText.text = getString(R.string.ball_soccer_text) + " " +newBallSoccer.toString() ////aqui hacemos lo del apple
         })
 
-        shopViewModel.ballBasket.observe(viewLifecycleOwner, Observer { newBallBasket ->
+        sportShopViewModel.ballBasket.observe(viewLifecycleOwner, Observer { newBallBasket ->
             binding.ballBasketText.text = getString(R.string.ball_basket_text) + " " + newBallBasket.toString()
         })
 
-        shopViewModel.ballTennis.observe(viewLifecycleOwner, Observer { newBallTennis ->
+        sportShopViewModel.ballTennis.observe(viewLifecycleOwner, Observer { newBallTennis ->
             binding.ballTennisText.text = getString(R.string.ball_tennis_text) + " " + newBallTennis.toString()
         })
 
-        shopViewModel.ballBaseball.observe(viewLifecycleOwner, Observer { newBallBaseball ->
+        sportShopViewModel.ballBaseball.observe(viewLifecycleOwner, Observer { newBallBaseball ->
             binding.ballBaseballText.text = getString(R.string.ball_baseball_text) + " " + newBallBaseball.toString()
         })
 
-        shopViewModel.sport.observe(viewLifecycleOwner, Observer{ newSport ->
+        sportShopViewModel.sport.observe(viewLifecycleOwner, Observer{ newSport ->
             if(newSport == getString(R.string.selected_sport)){
                 noSelectedSport()
             }else{ //si se ha seleccionado una fruta mostramos esa fruta
@@ -60,7 +60,7 @@ class SportShopFragment : Fragment() {
             }
         })
 
-        shopViewModel.saveSport(getString(R.string.selected_sport))
+        sportShopViewModel.saveSport(getString(R.string.selected_sport))
 
         sport = initSport()
         images = initImage()
@@ -76,7 +76,7 @@ class SportShopFragment : Fragment() {
                 views(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
                     binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
 
-                shopViewModel.saveSport(binding.spinnerSportShop.selectedItem.toString())
+                sportShopViewModel.saveSport(binding.spinnerSportShop.selectedItem.toString())
                 //usamos el observer de fruit para actualizar las vistas
             }
 
@@ -87,7 +87,7 @@ class SportShopFragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 quantity_number = progress
                 binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/50"
-                binding.priceSportText.text = getString(R.string.price_sport_text)+" "+ String.format("%.2f",shopViewModel.calculateSport(quantity_number, this@SportShopFragment)) +"€"
+                binding.priceSportText.text = getString(R.string.price_sport_text)+" "+ String.format("%.2f",sportShopViewModel.calculateSport(quantity_number, this@SportShopFragment)) +"€"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // Este método se llama cuando el usuario toca la SeekBar
@@ -99,16 +99,16 @@ class SportShopFragment : Fragment() {
 
         //seleccionamos el boton de añadir fruta
         binding.addSport.setOnClickListener {
-            shopViewModel.addSport(quantity_number, this) //añadimos la fruta al bundle
+            sportShopViewModel.addSport(quantity_number, this) //añadimos la fruta al bundle
             binding.seekBar.progress=0 //ponemos a 0 el seekBar
-            shopViewModel.calculatePriceSport() //calculamos el precio y lo añadimos al bundle
+            sportShopViewModel.calculatePriceSport() //calculamos el precio y lo añadimos al bundle
             views(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
                 binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket)
         }
 
         //si seleccionamos el boton de vaciar cesta
         binding.deleteBasket.setOnClickListener{
-            shopViewModel.deleteItemSport()
+            sportShopViewModel.deleteItemSport()
             binding.seekBar.progress=0
             views(binding.ballSoccerText, binding.ballBasketText, binding.ballTennisText, binding.ballBaseballText, binding.ballSoccerImage,
                 binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket)
@@ -155,7 +155,7 @@ class SportShopFragment : Fragment() {
         binding.priceSportText.visibility = View.GONE
         binding.deleteBasket.visibility = View.GONE
 
-        if((shopViewModel.totalSport.value ?: 0.0) > 0.0){
+        if((sportShopViewModel.totalSport.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
@@ -169,14 +169,14 @@ class SportShopFragment : Fragment() {
         binding.priceSportText.visibility = View.VISIBLE
         binding.seekBar.progress = 0 //ponemos a 0 el seekBar
 
-        if((shopViewModel.totalSport.value ?: 0.0) > 0.0){
+        if((sportShopViewModel.totalSport.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
         }
 
         binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/50"
-        binding.priceSportText.text = getString(R.string.price_sport_text)+" "+ String.format("%.2f",shopViewModel.calculateSport(quantity_number, this )) +"€"
+        binding.priceSportText.text = getString(R.string.price_sport_text)+" "+ String.format("%.2f",sportShopViewModel.calculateSport(quantity_number, this )) +"€"
     }
 
     fun active_views(sport_text: TextView, sport_image: ImageView){
@@ -194,27 +194,27 @@ class SportShopFragment : Fragment() {
               ballBaseball_text: TextView, ballSoccer_image: ImageView, ballBasket_image: ImageView,
               ballTennis_image: ImageView, ballBaseball_image: ImageView, delete_basket: Button
     ){
-        if((shopViewModel.ballSoccer.value ?: 0) > 0){
+        if((sportShopViewModel.ballSoccer.value ?: 0) > 0){
             active_views(ballSoccer_text, ballSoccer_image)
         }else{
             desactive_views(ballSoccer_text, ballSoccer_image)
         }
-        if((shopViewModel.ballBasket.value ?: 0) > 0){
+        if((sportShopViewModel.ballBasket.value ?: 0) > 0){
             active_views(ballBasket_text, ballBasket_image)
         }else{
             desactive_views(ballBasket_text, ballBasket_image)
         }
-        if((shopViewModel.ballTennis.value ?: 0) > 0){
+        if((sportShopViewModel.ballTennis.value ?: 0) > 0){
             active_views(ballTennis_text, ballTennis_image)
         }else{
             desactive_views(ballTennis_text, ballTennis_image)
         }
-        if((shopViewModel.ballBaseball.value ?: 0) > 0){
+        if((sportShopViewModel.ballBaseball.value ?: 0) > 0){
             active_views(ballBaseball_text, ballBaseball_image)
         }else{
             desactive_views(ballBaseball_text, ballBaseball_image)
         }
-        if((shopViewModel.totalSport.value ?: 0.0) > 0.0){
+        if((sportShopViewModel.totalSport.value ?: 0.0) > 0.0){
             delete_basket.visibility = View.VISIBLE
         }else{
             delete_basket.visibility = View.GONE

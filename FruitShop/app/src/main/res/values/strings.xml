@@ -139,8 +139,8 @@
     <string name="your_message">Your messages:</string>
     <string name="delete_message">Delete messages</string>
     <string name="buy_all">Buy</string>
-
-
+    <string name="log_out">Log Out</string>
+    <string name="text_user_welcome">Welcome</string>
 
 
 </resources>

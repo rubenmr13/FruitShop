@@ -16,7 +16,7 @@ import com.example.fruitshop.databinding.FragmentFishMarketBinding
 class FishMarketFragment : Fragment() {
 
     private lateinit var binding: FragmentFishMarketBinding
-    private val shopViewModel: ShopViewModel by activityViewModels()
+    private val fishMarketViewModel: FishMarketViewModel by activityViewModels()
 
     var fish = mutableListOf<String>() //no quitar
     lateinit var images : List<Int> //no quitar
@@ -33,27 +33,27 @@ class FishMarketFragment : Fragment() {
 
         var quantity_number = 0
 
-        shopViewModel.totalFish.observe(viewLifecycleOwner, Observer { newTotalFish ->
+        fishMarketViewModel.totalFish.observe(viewLifecycleOwner, Observer { newTotalFish ->
             binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",newTotalFish) +"€"
         })
 
-        shopViewModel.salmon.observe(viewLifecycleOwner, Observer { newSalmon ->
+        fishMarketViewModel.salmon.observe(viewLifecycleOwner, Observer { newSalmon ->
             binding.salmonText.text = getString(R.string.salmon_text) + " " +newSalmon.toString() ////aqui hacemos lo del apple
         })
 
-        shopViewModel.gilt_head_bream.observe(viewLifecycleOwner, Observer { newGilt_head_bream ->
+        fishMarketViewModel.gilt_head_bream.observe(viewLifecycleOwner, Observer { newGilt_head_bream ->
             binding.giltHeadBreamText.text = getString(R.string.gilt_head_bream_text) + " " + newGilt_head_bream.toString()
         })
 
-        shopViewModel.sea_bass.observe(viewLifecycleOwner, Observer { newSea_bass ->
+        fishMarketViewModel.sea_bass.observe(viewLifecycleOwner, Observer { newSea_bass ->
             binding.seaBassText.text = getString(R.string.sea_bass_text) + " " + newSea_bass.toString()
         })
 
-        shopViewModel.red_mullet.observe(viewLifecycleOwner, Observer { newRed_mullet ->
+        fishMarketViewModel.red_mullet.observe(viewLifecycleOwner, Observer { newRed_mullet ->
             binding.redMulletText.text = getString(R.string.red_mullet_text) + " " + newRed_mullet.toString()
         })
 
-        shopViewModel.fish.observe(viewLifecycleOwner, Observer{ newFish ->
+        fishMarketViewModel.fish.observe(viewLifecycleOwner, Observer{ newFish ->
             if(newFish == getString(R.string.selected_fish)){
                 noSelectedFish()
             }else{ //si se ha seleccionado una fruta mostramos esa fruta
@@ -61,7 +61,7 @@ class FishMarketFragment : Fragment() {
             }
         })
 
-        shopViewModel.saveFish(getString(R.string.selected_fish))
+        fishMarketViewModel.saveFish(getString(R.string.selected_fish))
 
         fish = initFish()
         images = initImage()
@@ -74,7 +74,7 @@ class FishMarketFragment : Fragment() {
 
                 views(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                     binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
-                shopViewModel.saveFish(binding.spinnerFishShop.selectedItem.toString())
+                fishMarketViewModel.saveFish(binding.spinnerFishShop.selectedItem.toString())
                 //usamos el observer de fruit para actualizar las vistas
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -84,7 +84,7 @@ class FishMarketFragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 quantity_number = progress
                 binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/10"
-                binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",shopViewModel.calculateFish(quantity_number, this@FishMarketFragment)) +"€"
+                binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",fishMarketViewModel.calculateFish(quantity_number, this@FishMarketFragment)) +"€"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // Este método se llama cuando el usuario toca la SeekBar
@@ -95,15 +95,15 @@ class FishMarketFragment : Fragment() {
         })
 
         binding.addFish.setOnClickListener {
-            shopViewModel.addFish(quantity_number, this) //añadimos la fruta al bundle
+            fishMarketViewModel.addFish(quantity_number, this) //añadimos la fruta al bundle
             binding.seekBar.progress=0 //ponemos a 0 el seekBar
-            shopViewModel.calculatePriceFish() //calculamos el precio y lo añadimos al bundle
+            fishMarketViewModel.calculatePriceFish() //calculamos el precio y lo añadimos al bundle
             views(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                 binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage, binding.deleteBasket)
         }
 
         binding.deleteBasket.setOnClickListener{
-            shopViewModel.deleteItemFish()
+            fishMarketViewModel.deleteItemFish()
             binding.seekBar.progress=0
             views(binding.salmonText, binding.giltHeadBreamText, binding.seaBassText, binding.redMulletText, binding.salmonImage,
                 binding.giltHeadBreamImage, binding.seaBassImage, binding.redMulletImage, binding.deleteBasket)
@@ -149,7 +149,7 @@ class FishMarketFragment : Fragment() {
         binding.priceFishText.visibility = View.GONE
         binding.deleteBasket.visibility = View.GONE
 
-        if((shopViewModel.totalFish.value ?: 0.0) > 0.0){
+        if((fishMarketViewModel.totalFish.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
@@ -163,14 +163,14 @@ class FishMarketFragment : Fragment() {
         binding.priceFishText.visibility = View.VISIBLE
         binding.seekBar.progress = 0 //ponemos a 0 el seekBar
 
-        if((shopViewModel.totalFish.value ?: 0.0) > 0.0){
+        if((fishMarketViewModel.totalFish.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
         }
 
         binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/10"
-        binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",shopViewModel.calculateFish(quantity_number, this )) +"€"
+        binding.priceFishText.text = getString(R.string.price_fish_text)+" "+ String.format("%.2f",fishMarketViewModel.calculateFish(quantity_number, this )) +"€"
     }
 
     fun active_views(fish_text: TextView, fish_image: ImageView){
@@ -187,27 +187,27 @@ class FishMarketFragment : Fragment() {
     fun views(salmon_text: TextView, gilt_head_bream_text: TextView, sea_bass_text: TextView,
               red_mullet_text: TextView, salmon_image: ImageView, gilt_head_bream_image: ImageView,
               sea_bass_image: ImageView, red_mullet_image: ImageView, delete_basket: Button){
-        if((shopViewModel.salmon.value ?: 0) > 0){
+        if((fishMarketViewModel.salmon.value ?: 0) > 0){
             active_views(salmon_text, salmon_image)
         }else{
             desactive_views(salmon_text, salmon_image)
         }
-        if((shopViewModel.gilt_head_bream.value ?: 0) > 0){
+        if((fishMarketViewModel.gilt_head_bream.value ?: 0) > 0){
             active_views(gilt_head_bream_text, gilt_head_bream_image)
         }else{
             desactive_views(gilt_head_bream_text, gilt_head_bream_image)
         }
-        if((shopViewModel.sea_bass.value ?: 0) > 0){
+        if((fishMarketViewModel.sea_bass.value ?: 0) > 0){
             active_views(sea_bass_text, sea_bass_image)
         }else{
             desactive_views(sea_bass_text, sea_bass_image)
         }
-        if((shopViewModel.red_mullet.value ?: 0) > 0){
+        if((fishMarketViewModel.red_mullet.value ?: 0) > 0){
             active_views(red_mullet_text, red_mullet_image)
         }else{
             desactive_views(red_mullet_text, red_mullet_image)
         }
-        if((shopViewModel.totalFish.value ?: 0.0) > 0.0){
+        if((fishMarketViewModel.totalFish.value ?: 0.0) > 0.0){
             delete_basket.visibility = View.VISIBLE
         }else{
             delete_basket.visibility = View.GONE

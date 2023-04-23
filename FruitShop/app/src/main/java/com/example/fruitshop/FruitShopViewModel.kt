@@ -12,8 +12,6 @@ class FruitShopViewModel: ViewModel() {
     val ORANGE_PRICE = 0.25
     val PLUM_PRICE = 0.09
 
-    //lateinit var fruit : String //guarda la fruta seleccionada en el spinner
-
 
     private val _fruit = MutableLiveData<String>()
     val fruit: LiveData<String>
@@ -96,10 +94,14 @@ class FruitShopViewModel: ViewModel() {
         return total
     }
 
+    fun getTotalFruit(): Double {
+        return _totalFruit.value?: 0.0
+    }
+
 
 
     /////////////////////////// fish market
-
+/*
     val SALMON_PRICE = 7.0
     val GILT_HEAD_BREAM_PRICE = 6.0
     val SEA_BASS_PRICE = 5.0
@@ -189,10 +191,10 @@ class FruitShopViewModel: ViewModel() {
     fun saveFish(fish: String){
         _fish.value = fish
     }
-
+*/
 
     /////// BUTCHER SHOP
-
+/*
     val COW_PRICE = 3.0
     val CHICKEN_PRICE = 4.5
     val PIG_PRICE = 1.0
@@ -281,9 +283,9 @@ class FruitShopViewModel: ViewModel() {
         _meat.value = meat
     }
 
-
+*/
     /////// SPORT SHOP
-
+/*
     val BALL_SOCCER = 12.0
     val BALL_BASKET = 8.0
     val BALL_TENNIS = 2.5
@@ -371,26 +373,26 @@ class FruitShopViewModel: ViewModel() {
     fun saveSport(sport: String){
         _sport.value = sport
     }
-
+*/
 
     ////// BASKET
-    private val _totalFinal = MutableLiveData<Double>()
+ /*   private val _totalFinal = MutableLiveData<Double>()
     val totalFinal: LiveData<Double>
         get() = _totalFinal
 
     fun calculatePriceFinal(){
         val totalFruits = _totalFruit.value ?: 0.0
         val totalFish = _totalFish.value ?: 0.0
-        val totalMeat = _totalMeat.value ?: 0.0
+        val totalMeat =0// _totalMeat.value ?: 0.0
         val totalSport = _totalSport.value ?: 0.0
 
         val total = totalFruits + totalFish + totalMeat + totalSport
 
         _totalFinal.value = total
-    }
+    }*/
 
     ////// CHAT
-    private val _messageChat = MutableLiveData<String>()
+/*    private val _messageChat = MutableLiveData<String>()
     val messageChat: LiveData<String>
         get() = _messageChat
 
@@ -406,11 +408,7 @@ class FruitShopViewModel: ViewModel() {
         if(_messageChat.value == null){
             _messageChat.value = ""
         }
-    }
+    }*/
 
-    ////// INBOX
-    fun deleteMessage(){
-        _messageChat.value = ""
-    }
 
 }

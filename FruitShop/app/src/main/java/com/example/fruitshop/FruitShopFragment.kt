@@ -19,7 +19,7 @@ class FruitShopFragment : Fragment() {
 
     private lateinit var binding: FragmentFruitShopBinding
     //private lateinit var fruitShopViewModel: FruitShopViewModel
-    private val shopViewModel: ShopViewModel by activityViewModels()
+    private val fruitShopViewModel: FruitShopViewModel by activityViewModels()
 
     var fruits = mutableListOf<String>() //no quitar
     lateinit var images : List<Int> //no quitar
@@ -40,31 +40,31 @@ class FruitShopFragment : Fragment() {
 
         var quantity_number = 0
 
-        shopViewModel.totalFruit.observe(viewLifecycleOwner, Observer { newTotalFruit ->
+        fruitShopViewModel.totalFruit.observe(viewLifecycleOwner, Observer { newTotalFruit ->
             binding.totalText.text = getString(R.string.total)+" "+ String.format("%.2f",newTotalFruit) +"€"
         })
 
-        shopViewModel.apple.observe(viewLifecycleOwner, Observer { newApple ->
+        fruitShopViewModel.apple.observe(viewLifecycleOwner, Observer { newApple ->
             //fruitShopViewModel.saveApple(newApple)
             binding.appleText.text = getString(R.string.apple_text) + " " +newApple.toString() ////aqui hacemos lo del apple
         })
 
-        shopViewModel.pear.observe(viewLifecycleOwner, Observer { newPear ->
+        fruitShopViewModel.pear.observe(viewLifecycleOwner, Observer { newPear ->
             //fruitShopViewModel.savePear(newPear)
             binding.pearText.text = getString(R.string.pear_text) + " " + newPear.toString()
         })
 
-        shopViewModel.orange.observe(viewLifecycleOwner, Observer { newOrange ->
+        fruitShopViewModel.orange.observe(viewLifecycleOwner, Observer { newOrange ->
             //fruitShopViewModel.saveOrange(newOrange)
             binding.orangeText.text = getString(R.string.orange_text) + " " + newOrange.toString()
         })
 
-        shopViewModel.plum.observe(viewLifecycleOwner, Observer { newPlum ->
+        fruitShopViewModel.plum.observe(viewLifecycleOwner, Observer { newPlum ->
             //fruitShopViewModel.savePlum(newPlum)
             binding.plumText.text = getString(R.string.plum_text) + " " + newPlum.toString()
         })
 
-        shopViewModel.fruit.observe(viewLifecycleOwner, Observer{ newFruit ->
+        fruitShopViewModel.fruit.observe(viewLifecycleOwner, Observer{ newFruit ->
             if(newFruit == getString(R.string.selected_fruit)){
                 noSelectedFruit()
             }else{ //si se ha seleccionado una fruta mostramos esa fruta
@@ -72,7 +72,7 @@ class FruitShopFragment : Fragment() {
             }
         })
 
-        shopViewModel.saveFruit(getString(R.string.selected_fruit))
+        fruitShopViewModel.saveFruit(getString(R.string.selected_fruit))
 
         fruits = init_fruit()
         images = init_image()
@@ -87,7 +87,7 @@ class FruitShopFragment : Fragment() {
 
                 views(binding.appleText, binding.pearText, binding.orangeText, binding.plumText, binding.appleImage,
                     binding.pearImage, binding.orangeImage, binding.plumImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
-                shopViewModel.saveFruit(binding.spinnerFruitShop.selectedItem.toString())
+                fruitShopViewModel.saveFruit(binding.spinnerFruitShop.selectedItem.toString())
                 //usamos el observer de fruit para actualizar las vistas
             }
 
@@ -98,7 +98,7 @@ class FruitShopFragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 quantity_number = progress
                 binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100"
-                binding.priceFruitText.text = getString(R.string.price_fruit_text)+" "+ String.format("%.2f",shopViewModel.calculateFruit(quantity_number, this@FruitShopFragment)) +"€"
+                binding.priceFruitText.text = getString(R.string.price_fruit_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateFruit(quantity_number, this@FruitShopFragment)) +"€"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // Este método se llama cuando el usuario toca la SeekBar
@@ -110,10 +110,10 @@ class FruitShopFragment : Fragment() {
 
         //seleccionamos el boton de añadir fruta
         binding.addFruit.setOnClickListener {
-            shopViewModel.addFruit(quantity_number, this) //añadimos la fruta al bundle
+            fruitShopViewModel.addFruit(quantity_number, this) //añadimos la fruta al bundle
 
             binding.seekBar.progress=0 //ponemos a 0 el seekBar
-            shopViewModel.calculatePriceFruit() //calculamos el precio y lo añadimos al bundle
+            fruitShopViewModel.calculatePriceFruit() //calculamos el precio y lo añadimos al bundle
             views(binding.appleText, binding.pearText, binding.orangeText , binding.plumText,
                 binding.appleImage, binding.pearImage, binding.orangeImage, binding.plumImage,
                 binding.deleteBasket)
@@ -121,7 +121,7 @@ class FruitShopFragment : Fragment() {
 
         //si seleccionamos el boton de vaciar cesta
         binding.deleteBasket.setOnClickListener{
-            shopViewModel.deleteItemFruit()
+            fruitShopViewModel.deleteItemFruit()
             binding.seekBar.progress=0
             views(binding.appleText, binding.pearText, binding.orangeText , binding.plumText,binding.appleImage, binding.pearImage,
                 binding.orangeImage, binding.plumImage, binding.deleteBasket)
@@ -169,7 +169,7 @@ class FruitShopFragment : Fragment() {
         binding.priceFruitText.visibility = View.GONE
         binding.deleteBasket.visibility = View.GONE
 
-        if((shopViewModel.totalFruit.value ?: 0.0) > 0.0){
+        if((fruitShopViewModel.totalFruit.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
@@ -183,14 +183,14 @@ class FruitShopFragment : Fragment() {
         binding.priceFruitText.visibility = View.VISIBLE
         binding.seekBar.progress = 0 //ponemos a 0 el seekBar
 
-        if((shopViewModel.totalFruit.value ?: 0.0) > 0.0){
+        if((fruitShopViewModel.totalFruit.value ?: 0.0) > 0.0){
             binding.deleteBasket.visibility = View.VISIBLE
         }else{
             binding.deleteBasket.visibility = View.GONE
         }
 
         binding.textQuantitySelected.text = getString(R.string.text_quantity_selected)+ " "+quantity_number+"/100"
-        binding.priceFruitText.text = getString(R.string.price_fruit_text)+" "+ String.format("%.2f",shopViewModel.calculateFruit(quantity_number, this )) +"€"
+        binding.priceFruitText.text = getString(R.string.price_fruit_text)+" "+ String.format("%.2f",fruitShopViewModel.calculateFruit(quantity_number, this )) +"€"
     }
 
     fun active_views(fruit_text: TextView, fruit_image: ImageView){
@@ -209,27 +209,27 @@ class FruitShopFragment : Fragment() {
               orange_image: ImageView, plum_image: ImageView, delete_basket: Button
     ){
 
-        if((shopViewModel.apple.value ?: 0) > 0){
+        if((fruitShopViewModel.apple.value ?: 0) > 0){
             active_views(apple_text, apple_image)
         }else{
             desactive_views(apple_text, apple_image)
         }
-        if((shopViewModel.pear.value ?: 0) > 0){
+        if((fruitShopViewModel.pear.value ?: 0) > 0){
             active_views(pear_text, pear_image)
         }else{
             desactive_views(pear_text, pear_image)
         }
-        if((shopViewModel.orange.value ?: 0) > 0){
+        if((fruitShopViewModel.orange.value ?: 0) > 0){
             active_views(orange_text, orange_image)
         }else{
             desactive_views(orange_text, orange_image)
         }
-        if((shopViewModel.plum.value ?: 0) > 0){
+        if((fruitShopViewModel.plum.value ?: 0) > 0){
             active_views(plum_text, plum_image)
         }else{
             desactive_views(plum_text, plum_image)
         }
-        if((shopViewModel.totalFruit.value ?: 0.0) > 0.0){
+        if((fruitShopViewModel.totalFruit.value ?: 0.0) > 0.0){
             delete_basket.visibility = View.VISIBLE
         }else{
             delete_basket.visibility = View.GONE

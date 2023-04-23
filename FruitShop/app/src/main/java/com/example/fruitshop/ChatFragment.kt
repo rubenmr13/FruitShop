@@ -17,7 +17,7 @@ import com.example.fruitshop.databinding.FragmentChatBinding
 class ChatFragment : Fragment() {
 
     private lateinit var binding: FragmentChatBinding
-    private val shopViewModel: ShopViewModel by activityViewModels()
+    private val chatViewModel: ShopViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +30,11 @@ class ChatFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat, container, false)
 
-        shopViewModel.messageChat.observe(viewLifecycleOwner, Observer {
-            binding.receivedText.text = shopViewModel.getMessageChat()
+        chatViewModel.messageChat.observe(viewLifecycleOwner, Observer {
+            binding.receivedText.text = chatViewModel.getMessageChat()
         })
 
-        shopViewModel.initMessageChat()
+        chatViewModel.initMessageChat()
         var text_chat = ""
 
         binding.sendText.addTextChangedListener(object : TextWatcher {
@@ -53,7 +53,7 @@ class ChatFragment : Fragment() {
 
         binding.sendButton.setOnClickListener{
             if(text_chat!=""){
-                shopViewModel.addMessageChat(text_chat)
+                chatViewModel.addMessageChat(text_chat)
                 binding.sendText.setText("") //borramos lo que hemos escrito en el editText
             }
         }

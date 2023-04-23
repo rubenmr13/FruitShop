@@ -8,7 +8,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.fruitshop.databinding.FragmentUserBinding
 
@@ -16,6 +21,8 @@ import com.example.fruitshop.databinding.FragmentUserBinding
 class UserFragment : Fragment() {
 
     private lateinit var binding: FragmentUserBinding
+    private val userViewModel: UserViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,9 +35,18 @@ class UserFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, container, false)
 
         var writeUser: Boolean = false
+        var nameUser = userViewModel.getUser()
         var writePassword : Boolean = false
 
-        binding.user.addTextChangedListener(object : TextWatcher {
+
+       userViewModel.user.observe(viewLifecycleOwner, Observer { newUser ->
+               binding.textUserWelcome.text = getString(R.string.text_user_welcome)+" "+ newUser.toString()
+               viewsUser()
+        })
+
+        viewsUser()
+
+        binding.userEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // se llama antes de que el texto en el EditText cambie
             }
@@ -38,15 +54,17 @@ class UserFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 //se llama durante el cambio del texto en el EditText
                 writeUser = true
+                nameUser = s.toString()
             }
 
             override fun afterTextChanged(s: Editable?) {
                 //se llama después de que el texto en el EditText cambie
-
+                //nameUser = s.toString()
+                //userViewModel.addUser(s.toString())
             }
         })
 
-        binding.password.addTextChangedListener(object : TextWatcher {
+        binding.passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // se llama antes de que el texto en el EditText cambie
             }
@@ -58,7 +76,6 @@ class UserFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 //se llama después de que el texto en el EditText cambie
-
             }
         })
 
@@ -66,14 +83,49 @@ class UserFragment : Fragment() {
         binding.signIn.setOnClickListener{
             if(writeUser && writePassword){
                 findNavController().navigate(R.id.action_userFragment_to_menuFragment)
-            }
-        }
-        binding.singUp.setOnClickListener{
-            if(writeUser && writePassword) {
-                findNavController().navigate(R.id.action_userFragment_to_menuFragment)
+                userViewModel.addUser(nameUser)
+                //viewsUser(nameUser)
             }
         }
 
+
+        binding.signUp.setOnClickListener{
+            if(writeUser && writePassword) {
+                findNavController().navigate(R.id.action_userFragment_to_menuFragment)
+                userViewModel.addUser(nameUser)
+                //viewsUser(nameUser)
+            }
+        }
+
+        binding.logOut.setOnClickListener {
+            //views
+            nameUser = ""
+            userViewModel.addUser(nameUser)
+            //viewsUser(nameUser)
+
+        }
+
         return binding.root
+    }
+
+    //binding.messageInbox.text.toString().trim().isEmpty()
+
+    fun viewsUser(){
+        if(binding.textUserWelcome.text.toString().trim().isEmpty()){
+            binding.userEditText.visibility = View.VISIBLE
+            binding.passwordEditText.visibility = View.VISIBLE
+            binding.signIn.visibility = View.VISIBLE
+            binding.signUp.visibility = View.VISIBLE
+            binding.textUserWelcome.visibility = View.GONE
+            binding.logOut.visibility = View.GONE
+
+        }else{
+            binding.userEditText.visibility = View.GONE
+            binding.passwordEditText.visibility = View.GONE
+            binding.signIn.visibility = View.GONE
+            binding.signUp.visibility = View.GONE
+            binding.textUserWelcome.visibility = View.VISIBLE
+            binding.logOut.visibility = View.VISIBLE
+        }
     }
 }

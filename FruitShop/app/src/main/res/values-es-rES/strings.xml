@@ -105,5 +105,7 @@
     <string name="your_message">Tus mensajes:</string>
     <string name="delete_message">Borrar mensajes</string>
     <string name="buy_all">Comprar</string>
+    <string name="log_out">Log Out</string>
+    <string name="text_user_welcome">Welcome</string>
 
 </resources>

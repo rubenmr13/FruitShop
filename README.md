@@ -21,6 +21,7 @@ Al desplegar el "Drawer Menu", en primer lugar aparecerá en la parte superior e
 
 1. El primer icono que aparece en el "Drawer Menu" es el "User". Al seleccionar esta opción, la aplicación nos llevará a un formulario en el que se puede iniciar sesión en la cuenta de usuario. Este formulario consta de dos campos: "User" y "Password". Si el usuario ya tiene una cuenta, puede ingresar su información en los campos correspondientes y luego hacer clic en el botón "Sign In" para acceder a la cuenta.
 También se puede crear una cuenta de usuario haciendo clic en el botón "Sign Up" y completando los campos necesarios en el formulario. En ambos casos, si los campos de usuario y contraseña no se han completado correctamente, no se podrá iniciar sesión ni registrarse. Una vez que se ha iniciado sesión o registrado una cuenta nueva, la aplicación nos llevará de vuelta a la pantalla principal.
+Mejorado: Después de que el usuario inicie sesión o se registre, al volver a acceder a la pantalla del "User", se le dará la bienvenida junto con su nombre de usuario y se le brindará la opción de cerrar sesión gracias a un botón. Si el usuario decide cerrar sesión, volverá a la pantalla de iniciod e sesión con los formularios de registro disponibles.
 
 
 2. El segundo icono que aparece en el "Drawer Menu" es el "Chat". Al seleccionar esta opción, la aplicación nos llevará a una pantalla de chat simulado donde el usuario puede interactuar con la tienda. El usuario puede escribir mensajes en el campo de entrada y enviarlos presionando el botón "Enviar". Los mensajes aparecerán en la ventana de chat, debajo del último mensaje enviado.
@@ -68,16 +69,19 @@ Los extras que se han incluido en la aplicación son:
 * Fotografía del producto en el spinner.
 * Fotografía del producto en la cesta.
 * Evitar tener que pulsar el botón para seleccionar una fruta en el Spinner
+* Guardar el nombre del usuario que inició la sesión
+* Posibilidad de cerrar la sesion si el usuario inició la sesión anteriormente.
 * "Flecha Hacia Atrás" que permite volver a la pantalla anterior 
 * Cambio automatico del "Drawer Menu" por una "Flecha Hacia Atrás"
 * Posibilidad de vaciar la cesta de una sección.
 * Posibilidad de vaciar la cesta total.
 * No permitir que el usuario inicie sesion o cree una cuenta si todos los campos no estan rellenos.
 * Boton dentro del Inbox que permite borrar los mensajes escritos por el usuario
+* Logica de negicio del User
 * Logica de negocio del Chat
 * Logica de negocio del Inbox
-* Logica de negicio del User
 * Persistencia de la información entre cambios de orientación
+
 
 * Mejora que haga la pantalla más atractiva desde el punto de vista funcional como:
     * Logo de la empresa

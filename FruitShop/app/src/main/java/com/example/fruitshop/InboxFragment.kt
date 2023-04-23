@@ -13,7 +13,7 @@ import com.example.fruitshop.databinding.FragmentInboxBinding
 class InboxFragment : Fragment() {
 
     private lateinit var binding: FragmentInboxBinding
-    private val shopViewModel: ShopViewModel by activityViewModels()
+    private val inboxViewModel: ShopViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +28,13 @@ class InboxFragment : Fragment() {
 
         viewDeleteMessage()
 
-        shopViewModel.messageChat.observe(viewLifecycleOwner, Observer {
-            binding.messageInbox.text = shopViewModel.getMessageChat()
+        inboxViewModel.messageChat.observe(viewLifecycleOwner, Observer {
+            binding.messageInbox.text = inboxViewModel.getMessageChat()
             viewDeleteMessage()
         })
 
         binding.deleteMessage.setOnClickListener{
-            shopViewModel.deleteMessage()
+            inboxViewModel.deleteMessage()
             viewDeleteMessage()
         }
 

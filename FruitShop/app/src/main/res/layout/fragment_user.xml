@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type = "com.example.fruitshop.ShopViewModel"/>
+            type = "com.example.fruitshop.UserViewModel"/>
     </data>
 
 
@@ -30,7 +30,7 @@
 
 
         <EditText
-            android:id="@+id/user"
+            android:id="@+id/user_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
@@ -40,14 +40,13 @@
             android:padding="16dp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/password_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:backgroundTint="@color/blue_104d89"
             android:ems="10"
             android:hint="@string/password"
-
             android:inputType="textPassword"
             android:padding="16dp" />
 
@@ -69,7 +68,7 @@
                 android:text="@string/sign_in" />
 
             <Button
-                android:id="@+id/sing_up"
+                android:id="@+id/sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -79,6 +78,23 @@
                 android:text="@string/sing_up" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_user_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:layout_marginBottom="40dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/red_cc0000"
+            android:text="@string/log_out"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
