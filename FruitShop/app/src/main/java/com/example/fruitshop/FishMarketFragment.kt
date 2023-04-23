@@ -18,8 +18,8 @@ class FishMarketFragment : Fragment() {
     private lateinit var binding: FragmentFishMarketBinding
     private val fishMarketViewModel: FishMarketViewModel by activityViewModels()
 
-    var fish = mutableListOf<String>() //no quitar
-    lateinit var images : List<Int> //no quitar
+    var fish = mutableListOf<String>()
+    lateinit var images : List<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

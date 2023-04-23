@@ -79,13 +79,10 @@
     <string name="label_menu">Menu</string>
     <string name="label_basket">Cesta</string>
 
-
     //DRAWER
     <string name="user_text">Usuario</string>
     <string name="inbox_text">Correo</string>
     <string name="basket_text">Cesta Total</string>
-
-
 
     //USER
     <string name="user">Usuario</string>
@@ -99,13 +96,19 @@
     <string name="chat_header" translatable="false">Chat de la tienda</string>
     <string name="send_text">Escribe aquí</string>
     <string name="send">Enviar</string>
+    <string name="log_out">Cerrar Sesion</string>
+    <string name="text_user_welcome">Bienvenido</string>
+
 
     //INBOX
     <string name="inbox_header">Correo de la tienda</string>
     <string name="your_message">Tus mensajes:</string>
     <string name="delete_message">Borrar mensajes</string>
+
+
+    //BASKET
     <string name="buy_all">Comprar</string>
-    <string name="log_out">Log Out</string>
-    <string name="text_user_welcome">Welcome</string>
+
+
 
 </resources>

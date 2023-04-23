@@ -20,8 +20,7 @@ En la parte de navegación se ha implementado un práctico "Drawer Menu", lo que
 Al desplegar el "Drawer Menu", en primer lugar aparecerá en la parte superior el logo de la empresa. Debajo de este, se encuentran cuatro opciones de navegación que nos permiten acceder a las diferentes secciones de la aplicación. Cada opción se representa con un icono específico y su respectivo nombre:
 
 1. El primer icono que aparece en el "Drawer Menu" es el "User". Al seleccionar esta opción, la aplicación nos llevará a un formulario en el que se puede iniciar sesión en la cuenta de usuario. Este formulario consta de dos campos: "User" y "Password". Si el usuario ya tiene una cuenta, puede ingresar su información en los campos correspondientes y luego hacer clic en el botón "Sign In" para acceder a la cuenta.
-También se puede crear una cuenta de usuario haciendo clic en el botón "Sign Up" y completando los campos necesarios en el formulario. En ambos casos, si los campos de usuario y contraseña no se han completado correctamente, no se podrá iniciar sesión ni registrarse. Una vez que se ha iniciado sesión o registrado una cuenta nueva, la aplicación nos llevará de vuelta a la pantalla principal.
-Mejorado: Después de que el usuario inicie sesión o se registre, al volver a acceder a la pantalla del "User", se le dará la bienvenida junto con su nombre de usuario y se le brindará la opción de cerrar sesión gracias a un botón. Si el usuario decide cerrar sesión, volverá a la pantalla de iniciod e sesión con los formularios de registro disponibles.
+También se puede crear una cuenta de usuario haciendo clic en el botón "Sign Up" y completando los campos necesarios en el formulario. En ambos casos, si los campos de usuario y contraseña no se han completado correctamente, no se podrá iniciar sesión ni registrarse. Una vez que se ha iniciado sesión o registrado una cuenta nueva, la aplicación nos llevará a la misma pantalla del "User" donde se le dará la bienvenida junto con su nombre de usuario y se le brindará la opción de cerrar sesión gracias a un botón. Si el usuario decide cerrar sesión, volverá a la pantalla de inicio de sesión con los formularios de registro disponibles.
 
 
 2. El segundo icono que aparece en el "Drawer Menu" es el "Chat". Al seleccionar esta opción, la aplicación nos llevará a una pantalla de chat simulado donde el usuario puede interactuar con la tienda. El usuario puede escribir mensajes en el campo de entrada y enviarlos presionando el botón "Enviar". Los mensajes aparecerán en la ventana de chat, debajo del último mensaje enviado.
@@ -99,6 +98,29 @@ Los extras que se han incluido en la aplicación son:
 Para la utilizacion deL ViewModel y LiveData
 
 
+>## Explicacion 
+Para la realizacion de la practica ha sido necesario introducir nuevas librerias y nuevas conceptos.
+
+1. ViewModel y LiveData:
+
+    -ViewModel: El ViewModel es responsable de mantener y administrar los datos relacionados con la interfaz de usuario, se ocupa de la supervivencia a los cambios de configuración
+
+    -LiveData es una clase que se utiliza para almacenar y observar datos. Los objetos LiveData son observados desde el ViewModel y actualizados automáticamente cuando cambian los datos.
+
+    Para implementar el ViewModel y el LiveData es necesario crear una nueva clase que permita separar la lógica de la interfaz de usuario de la actividad o el fragmento de la logica de negocio.
+    
+    En esta práctica, se ha implementado una clase ViewModel para cada fragmento, a excepción de aquellos fragmentos que compartían datos, los cuales han usado la misma clase ViewModel.
+
+2. Navegacion:
+
+    Para la realización de la navegacion, es necesario crearnos una nueva carpeta que sea de tipo "Navigation", definir un grafo de navegación xml (en nuestro caso se llama "navigation.xml") que será el encargado de realizar la navegación.
+
+3. Imagenes:
+    Todas las imagenes que se usan en la aplicación están en la carpeta Drawable
+
+
+
+
 >## Imágenes
 <br>
 
@@ -113,6 +135,7 @@ Fotos de la aplicación al ejecutarse:
     * ![menu](images/horizontal/menu.png)
     * ![drawerMenu](images/horizontal/drawerMenu.png)
     * ![user](images/horizontal/user.png)
+    * ![userLogout](images/horizontal/user_logout.png)
     * ![chat](images/horizontal/chat.png)
     * ![inbox](images/horizontal/inbox.png)
     * ![fishShop](images/horizontal/fish1.png)
@@ -133,6 +156,7 @@ Fotos de la aplicación al ejecutarse:
     * ![drawerMenu](images/vertical/drawerMenuLand.png)
     * ![drawerMenu1](images/vertical/drawerMenuLand1.png)
     * ![user](images/vertical/userLand.png)
+    * ![userLogout](images/vertical/user_logoutLand.png)
     * ![chat](images/vertical/chatLand.png)
     * ![inbox](images/vertical/inboxLand.png)
     * ![fruitShop1](images/vertical/fruitLand.png)

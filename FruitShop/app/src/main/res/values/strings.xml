@@ -127,6 +127,8 @@
     <string name="password">Password</string>
     <string name="welcome_user">Register</string>
     <string name="register_user">Register User</string>
+    <string name="log_out">Log Out</string>
+    <string name="text_user_welcome">Welcome</string>
 
 
     //CHAT
@@ -138,9 +140,10 @@
     <string name="inbox_header">Inbox of shop</string>
     <string name="your_message">Your messages:</string>
     <string name="delete_message">Delete messages</string>
+
+    //BASKET
     <string name="buy_all">Buy</string>
-    <string name="log_out">Log Out</string>
-    <string name="text_user_welcome">Welcome</string>
+
 
 
 </resources>

@@ -18,25 +18,17 @@ class FruitShopFragment : Fragment() {
 
 
     private lateinit var binding: FragmentFruitShopBinding
-    //private lateinit var fruitShopViewModel: FruitShopViewModel
     private val fruitShopViewModel: FruitShopViewModel by activityViewModels()
 
-    var fruits = mutableListOf<String>() //no quitar
-    lateinit var images : List<Int> //no quitar
+    var fruits = mutableListOf<String>()
+    lateinit var images : List<Int>
 
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        //binding= DataBindingUtil.setContentView(this, R.layout.fragment_fruit_shop)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fruit_shop, container, false)
-
-        //fruitShopViewModel = ViewModelProvider(this@MainActivity)[FruitShopViewModel::class.java]
-        //fruitShopViewModel = ViewModelProvider(this).get(FruitShopViewModel::class.java)
-
-
-        /////binding.viewModel = fruitShopViewModel
 
         var quantity_number = 0
 
@@ -45,22 +37,18 @@ class FruitShopFragment : Fragment() {
         })
 
         fruitShopViewModel.apple.observe(viewLifecycleOwner, Observer { newApple ->
-            //fruitShopViewModel.saveApple(newApple)
             binding.appleText.text = getString(R.string.apple_text) + " " +newApple.toString() ////aqui hacemos lo del apple
         })
 
         fruitShopViewModel.pear.observe(viewLifecycleOwner, Observer { newPear ->
-            //fruitShopViewModel.savePear(newPear)
             binding.pearText.text = getString(R.string.pear_text) + " " + newPear.toString()
         })
 
         fruitShopViewModel.orange.observe(viewLifecycleOwner, Observer { newOrange ->
-            //fruitShopViewModel.saveOrange(newOrange)
             binding.orangeText.text = getString(R.string.orange_text) + " " + newOrange.toString()
         })
 
         fruitShopViewModel.plum.observe(viewLifecycleOwner, Observer { newPlum ->
-            //fruitShopViewModel.savePlum(newPlum)
             binding.plumText.text = getString(R.string.plum_text) + " " + newPlum.toString()
         })
 
@@ -88,7 +76,6 @@ class FruitShopFragment : Fragment() {
                 views(binding.appleText, binding.pearText, binding.orangeText, binding.plumText, binding.appleImage,
                     binding.pearImage, binding.orangeImage, binding.plumImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
                 fruitShopViewModel.saveFruit(binding.spinnerFruitShop.selectedItem.toString())
-                //usamos el observer de fruit para actualizar las vistas
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -108,7 +95,6 @@ class FruitShopFragment : Fragment() {
             }
         })
 
-        //seleccionamos el boton de añadir fruta
         binding.addFruit.setOnClickListener {
             fruitShopViewModel.addFruit(quantity_number, this) //añadimos la fruta al bundle
 
@@ -119,7 +105,6 @@ class FruitShopFragment : Fragment() {
                 binding.deleteBasket)
         }
 
-        //si seleccionamos el boton de vaciar cesta
         binding.deleteBasket.setOnClickListener{
             fruitShopViewModel.deleteItemFruit()
             binding.seekBar.progress=0
@@ -150,7 +135,6 @@ class FruitShopFragment : Fragment() {
         @SuppressLint("MissingInflatedId")
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val convertview = LayoutInflater.from(context).inflate(R.layout.itemspinner, parent, false)
-
 
             val imageView = convertview.findViewById<ImageView>(R.id.imageView)
             val tv1 = convertview.findViewById<TextView>(R.id.item_type)

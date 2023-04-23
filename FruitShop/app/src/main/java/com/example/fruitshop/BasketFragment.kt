@@ -71,16 +71,11 @@ class BasketFragment : Fragment() {
         viewBuy()
 
 
-
         binding.deleteBasket.setOnClickListener{
             fruitShopViewModel.deleteItemFruit()
-
             fishMarketViewModel.deleteItemFish()
-
             butcherShopViewModel.deleteItemMeat()
-
             sportShopViewModel.deleteItemSport()
-
             totalView()
             viewDelete()
             viewBuy()
@@ -88,13 +83,9 @@ class BasketFragment : Fragment() {
 
         binding.buyAll.setOnClickListener {
             fruitShopViewModel.deleteItemFruit()
-
             fishMarketViewModel.deleteItemFish()
-
             butcherShopViewModel.deleteItemMeat()
-
             sportShopViewModel.deleteItemSport()
-
             totalView()
             viewDelete()
             viewBuy()
@@ -110,7 +101,7 @@ class BasketFragment : Fragment() {
     }
 
     fun desactiveViews(item_text: TextView, item_image: ImageView){
-        item_text.visibility = View.GONE //mostramos la vista
+        item_text.visibility = View.GONE //no mostramos la vista
         item_image.visibility = View.GONE
     }
 

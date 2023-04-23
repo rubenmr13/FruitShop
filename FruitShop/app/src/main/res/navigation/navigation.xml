@@ -69,8 +69,8 @@
         android:label="@string/register_user"
         tools:layout="@layout/fragment_user" >
         <action
-            android:id="@+id/action_userFragment_to_menuFragment"
-            app:destination="@id/menuFragment" />
+            android:id="@+id/action_userFragment_self"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"

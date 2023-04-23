@@ -18,8 +18,8 @@ class ButcherShopFragment : Fragment() {
     private lateinit var binding: FragmentButcherShopBinding
     private val butcherShopViewModel: ButcherShopViewModel by activityViewModels()
 
-    var meat = mutableListOf<String>() //no quitar
-    lateinit var images : List<Int> //no quitar
+    var meat = mutableListOf<String>()
+    lateinit var images : List<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,6 @@ class ButcherShopFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_butcher_shop, container, false)
 
         var quantity_number = 0
@@ -100,7 +99,6 @@ class ButcherShopFragment : Fragment() {
             }
         })
 
-        //seleccionamos el boton de añadir fruta
         binding.addMeat.setOnClickListener {
             butcherShopViewModel.addMeat(quantity_number, this@ButcherShopFragment) //añadimos la fruta al bundle
             binding.seekBar.progress=0 //ponemos a 0 el seekBar
@@ -109,7 +107,6 @@ class ButcherShopFragment : Fragment() {
                 binding.chickenImage, binding.pigImage, binding.minceImage, binding.deleteBasket)
         }
 
-        //si seleccionamos el boton de vaciar cesta
         binding.deleteBasket.setOnClickListener{
             butcherShopViewModel.deleteItemMeat()
             binding.seekBar.progress=0

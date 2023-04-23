@@ -57,7 +57,6 @@ class FishMarketViewModel: ViewModel() {
         }
     }
 
-
     fun deleteItemFish(){
         _salmon.value = 0
         _gilt_head_bream.value = 0

@@ -37,7 +37,7 @@ class SportShopFragment : Fragment() {
         })
 
         sportShopViewModel.ballSoccer.observe(viewLifecycleOwner, Observer { newBallSoccer ->
-            binding.ballSoccerText.text = getString(R.string.ball_soccer_text) + " " +newBallSoccer.toString() ////aqui hacemos lo del apple
+            binding.ballSoccerText.text = getString(R.string.ball_soccer_text) + " " +newBallSoccer.toString()
         })
 
         sportShopViewModel.ballBasket.observe(viewLifecycleOwner, Observer { newBallBasket ->
@@ -77,7 +77,6 @@ class SportShopFragment : Fragment() {
                     binding.ballBasketImage, binding.ballTennisImage, binding.ballBaseballImage, binding.deleteBasket) //Muestra las views cuando cambia la orientacion
 
                 sportShopViewModel.saveSport(binding.spinnerSportShop.selectedItem.toString())
-                //usamos el observer de fruit para actualizar las vistas
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}

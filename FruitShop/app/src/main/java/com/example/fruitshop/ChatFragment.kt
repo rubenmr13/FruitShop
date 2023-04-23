@@ -39,14 +39,10 @@ class ChatFragment : Fragment() {
 
         binding.sendText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // No necesitamos hacer nada aquí
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Cuando el texto cambia, establecemos el texto del TextView al texto del EditText
-
             }
             override fun afterTextChanged(s: Editable?) {
-                // No necesitamos hacer nada aquí
                 text_chat = s.toString()
             }
         })
